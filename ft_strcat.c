@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 14:37:32 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/21 07:52:18 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:17:39 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ char	*ft_strcat(char *dst, const char *str)
 {
 	int length;
 
-	length = ft_strlen(dst);
-	ft_strcpy(dst + length, str);
+	if (dst && str)
+	{
+		length = ft_strlen(dst);
+		ft_strcpy(dst + length, str);
+	}
 	return (dst);
 }

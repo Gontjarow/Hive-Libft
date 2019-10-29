@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 13:15:41 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:40:36 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 /*
 ** Memory free
 */
-void	ft_memdel(void **p);
+void	ft_memdel(void **ptr);
 void	ft_strdel(char **str);
 
 /*
@@ -35,8 +35,8 @@ char	*ft_strnew(size_t size);
 char	*ft_strdup(const char *str);
 char	*ft_strsub(const char *str, unsigned int start, size_t len);
 char	*ft_strjoin(const char *dst, const char *str);
-char	*ft_strmap(const char *s, char (*f)(char));
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+char	*ft_strmap(const char *str, char (*f)(char));
+char	*ft_strmapi(const char *str, char (*f)(unsigned int, char));
 char	*ft_strtrim(const char *str);
 char	**ft_strsplit(const char *str, char c);
 int		*ft_range(int min, int max);
@@ -45,7 +45,7 @@ char	*ft_itoa(int nbr);
 /*
 ** Memory modify, no allocation
 */
-void	*ft_memset(void *b, int c, size_t n);
+void	*ft_memset(void *dst, int c, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t n);
@@ -53,7 +53,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n);
 /*
 ** Memory checking
 */
-void	*ft_memchr(const void *str, int c, size_t n);
+void	*ft_memchr(const void *dst, int c, size_t n);
 int		ft_memcmp(const void *dst, const void *src, size_t n);
 
 /*
@@ -91,10 +91,10 @@ int		ft_atoi(const char *str);
 ** String checking
 */
 size_t	ft_strlen(const char *str);
-int		ft_strcmp(const char *s1, const char *s2);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_strequ(const char *s1, const char *s2);
-int		ft_strnequ(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *str1, const char *str2);
+int		ft_strncmp(const char *str1, const char *str2, size_t n);
+int		ft_strequ(const char *str1, const char *str2);
+int		ft_strnequ(const char *str1, const char *str2, size_t n);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
@@ -104,7 +104,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 ** String modify, no allocation
 */
 void	ft_strclr(char *str);
-void	ft_bzero(void *str, size_t n);
+void	ft_bzero(void *dst, size_t n);
 char	*ft_strcpy(char *dst, const char *str);
 char	*ft_strncpy(char *dst, const char *str, size_t len);
 size_t	ft_strlcpy(char *dst, const char *str, size_t n);

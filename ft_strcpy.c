@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 14:01:57 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/22 17:46:19 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:43:03 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 char	*ft_strcpy(char *dst, const char *str)
 {
-	int i;
+	size_t i;
 
-	i = 0;
-	while (str[i])
+	if (dst && str)
 	{
-		dst[i] = str[i];
-		++i;
+		i = 0;
+		while (str[i])
+		{
+			dst[i] = str[i];
+			++i;
+		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
 	return (dst);
 }
