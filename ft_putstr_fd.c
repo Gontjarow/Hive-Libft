@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:52:22 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/17 21:24:45 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 19:58:25 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_putstr_fd(const char *str, int fd)
 {
-	while (*str)
+	if (str != NULL)
 	{
-		write(fd, str, 1);
-		++str;
+		write(fd, str, ft_strlen(str));
 	}
 }

@@ -6,18 +6,22 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 17:04:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/22 22:57:34 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:34:01 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int		ft_strcmp(const char *str1, const char *str2)
 {
-	while (*s1 && (*s1 == *s2))
-	{
-		++s1;
-		++s2;
-	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	unsigned char	*p1;
+	unsigned char	*p2;
+	size_t			i;
+
+	p1 = (unsigned char *)str1;
+	p2 = (unsigned char *)str2;
+	i = 0;
+	while (p1[i] && (p1[i] == p2[i]))
+		++i;
+	return (p1[i] - p2[i]);
 }

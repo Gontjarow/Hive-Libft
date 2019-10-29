@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:11:46 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/17 21:24:45 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:27:28 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putendl(const char *str)
 {
 	ft_putstr(str);
-	ft_putchar('\n');
+	write(1, "\n", 1);
 }

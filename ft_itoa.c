@@ -6,18 +6,22 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:44:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/25 18:12:38 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:46:32 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** Shortness challenge.
+*/
+
 char	*ft_itoa(int num)
 {
 	char			*string;
 	unsigned int	number;
-	int				chars;
-	int				negative;
+	unsigned int	chars;
+	unsigned int	negative;
 
 	negative = (num < 0);
 	chars = ((num == 0) ? 1 : negative);

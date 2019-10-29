@@ -6,11 +6,15 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:03:39 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/25 17:13:07 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:48:44 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Shortness challenge.
+*/
 
 int		ft_atoi(const char *str)
 {

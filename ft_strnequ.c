@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 17:04:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/21 15:58:13 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 21:46:07 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int		ft_strnequ(const char *s1, const char *s2, size_t n)
 {
-	return (ft_strncmp((char *)s1, (char *)s2, n) == 0);
+	return (ft_strncmp(s1, s2, n) == 0);
 }
