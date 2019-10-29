@@ -6,14 +6,17 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:06:05 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/22 17:46:22 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:48:25 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+void	ft_strdel(char **p)
 {
-	free(*as);
-	*as = NULL;
+	if (*p != NULL)
+	{
+		free(*p);
+		*p = NULL;
+	}
 }

@@ -6,14 +6,17 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:06:05 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/17 16:14:11 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:13:00 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_memdel(void **p)
 {
-	free(*ap);
-	*ap = NULL;
+	if (*p != NULL)
+	{
+		free(*p);
+		*p = NULL;
+	}
 }

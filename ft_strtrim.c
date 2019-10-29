@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 20:23:11 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/24 19:40:17 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:26:19 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@ char		*ft_strtrim(const char *str)
 	size_t	start;
 	size_t	end;
 
-	if (!str)
-		return (NULL);
-	start = 0;
-	end = ft_strlen(str);
-	while (start < end)
+	string = NULL;
+	if (str != NULL)
 	{
-		if (!ft_isspace(str[start]))
-			break ;
-		++start;
+		start = 0;
+		end = ft_strlen(str);
+		while (start < end)
+		{
+			if (!ft_isspace(str[start]))
+				break ;
+			++start;
+		}
+		while (end > start && ft_isspace(str[--end]))
+			;
+		string = ft_strsub(str, start, end - start + 1);
+
 	}
-	while (end > start && ft_isspace(str[--end]))
-		;
-	string = ft_strsub(str, start, end - start + 1);
 	return (string);
 }

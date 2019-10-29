@@ -6,25 +6,30 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 19:58:20 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/25 14:33:01 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:21:42 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *str, unsigned int start, size_t len)
+char	*ft_strsub(const char *str, unsigned int start, size_t n)
 {
 	char	*string;
-	int		i;
+	size_t		i;
 
-	string = ft_strnew(len);
-	if (string == NULL)
-		return (NULL);
-	i = 0;
-	while (i < (int)len)
+	string = ft_strnew(n);
+	if (string != NULL)
 	{
-		string[i] = str[start + i];
-		++i;
+		i = 0;
+		while (i < n)
+		{
+			string[i] = str[start + i];
+			++i;
+		}
+	}
+	else
+	{
+		ft_strdel(&string);
 	}
 	return (string);
 }
