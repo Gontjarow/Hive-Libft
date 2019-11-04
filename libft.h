@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 22:40:36 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/04 15:37:55 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_putnbr(int nbr);
 void	ft_putstr(const char *str);
 void	ft_putendl(const char *str);
 void	ft_putstrn(const char *str, size_t n);
+void	ft_putstrn_nulls(const char *str, const char c, size_t n);
 void	ft_print2dstr(char **array, int count);
 
 /*
@@ -90,6 +91,7 @@ int		ft_atoi(const char *str);
 /*
 ** String checking
 */
+size_t	ft_strclen(const char *str, int c);
 size_t	ft_strlen(const char *str);
 int		ft_strcmp(const char *str1, const char *str2);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
