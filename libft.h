@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/04 15:37:55 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 20:21:02 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@
 # define ABS(value) (((value) < 0) ? -(value) : (value))
 # define TRUE (1)
 # define FALSE (0)
+# define ERROR (-1)
+
+typedef struct	s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}				t_list;
+
+t_list			*ft_lstnew(const void *content, size_t content_size);
+void			ft_lstadd(t_list **head, t_list *new);
+void			ft_lstadd_back(t_list *head, t_list *new);
+
+void			ft_lstdelone(t_list **link, void (*del)(void *, size_t));
+void			ft_lstdel(t_list **head, void (*del)(void *, size_t));
+void			ft_lstfree(void *content, size_t content_size);
+
+void			ft_lstiter(t_list *link, void (*func)(t_list *link));
+t_list			*ft_lstmap(t_list *head, t_list *(*func)(t_list *link));
 
 /*
 ** Memory free
@@ -65,7 +84,7 @@ void	ft_putstr(const char *str);
 void	ft_putendl(const char *str);
 void	ft_putstrn(const char *str, size_t n);
 void	ft_putstrn_nulls(const char *str, const char c, size_t n);
-void	ft_print2dstr(char **array, int count);
+void	ft_print2dstr(char **array, size_t count);
 
 /*
 ** File output

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:52:30 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 20:10:36 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 20:32:01 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,15 @@ void	*ft_memchr(const void *src, int c, size_t n)
 	const char	*source;
 	size_t		byte;
 
-	if (src)
+	source = src;
+	byte = 0;
+	while (byte < n)
 	{
-		source = src;
-		byte = 0;
-		while (byte < n)
+		if (source[byte] == c)
 		{
-			if (source[byte] == c)
-			{
-				return ((void *)&source[byte]);
-			}
-			++byte;
+			return ((void *)&source[byte]);
 		}
+		++byte;
 	}
 	return (NULL);
 }

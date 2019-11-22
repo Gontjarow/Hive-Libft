@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:01:54 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 20:19:41 by ngontjar         ###   ########.fr       */
+/*   Created: 2019/11/07 17:03:33 by ngontjar          #+#    #+#             */
+/*   Updated: 2019/11/08 21:54:56 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strrev(char *str)
+void	ft_lstdel(t_list **head, void (*del)(void *, size_t))
 {
-	size_t	start;
-	size_t	end;
-	char	hold;
-
-	if (str != NULL)
+	if (*head != NULL)
 	{
-		start = 0;
-		end = ft_strlen(str) - 1;
-		while (start < end)
-		{
-			hold = str[start];
-			str[start] = str[end];
-			str[end] = hold;
-			++start;
-			--end;
-		}
+		if ((*head)->next != NULL)
+			ft_lstdel(&(*head)->next, del);
+		del((*head)->content,
+			(*head)->content_size);
+		free(*head);
+		*head = NULL;
 	}
 }

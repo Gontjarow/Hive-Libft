@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:01:54 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 20:19:41 by ngontjar         ###   ########.fr       */
+/*   Created: 2019/11/07 16:49:33 by ngontjar          #+#    #+#             */
+/*   Updated: 2019/11/12 13:31:04 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strrev(char *str)
+t_list	*ft_lstnew(const void *content, size_t content_size)
 {
-	size_t	start;
-	size_t	end;
-	char	hold;
+	t_list	*link;
 
-	if (str != NULL)
+	if ((link = (t_list *)malloc(sizeof(t_list))))
 	{
-		start = 0;
-		end = ft_strlen(str) - 1;
-		while (start < end)
+		link->next = NULL;
+		link->content = NULL;
+		link->content_size = 0;
+		if (content && (link->content = malloc(content_size)))
 		{
-			hold = str[start];
-			str[start] = str[end];
-			str[end] = hold;
-			++start;
-			--end;
+			ft_memcpy(link->content, content, content_size);
+			link->content_size = content_size;
 		}
 	}
+	return (link);
 }

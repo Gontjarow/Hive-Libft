@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 13:15:52 by ngontjar          #+#    #+#              #
-#    Updated: 2019/11/04 16:28:38 by ngontjar         ###   ########.fr        #
+#    Updated: 2019/11/22 18:00:15 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,36 +16,44 @@ SRC1 = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c 
 
 SRC2 = ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-SRC3 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c
+SRC3 = ft_lstnew.c ft_lstadd.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c ft_lstmap.c
+
+SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c
 
 SRO1 = $(subst .c,.o,$(SRC1))
 SRO2 = $(subst .c,.o,$(SRC2))
 SRO3 = $(subst .c,.o,$(SRC3))
+SRO4 = $(subst .c,.o,$(SRC4))
 
 TESTSRC = ./test
 TESTBIN = ./test/bin
 
 FLAGS = -Wall -Wextra -Werror
 
-# "missing separator"?
-# .PHONY re fclean all objects run
+.PHONY: re fclean all objects run
 
 all: $(NAME)
 
-$(NAME): $(SRO1) $(SRO2) $(SRO3)
-	ar -rv $(NAME) $(SRO1) $(SRO2) $(SRO3)
+$(NAME): $(SRO1) $(SRO2) $(SRO3) $(SRO4)
+	@ar -rc $(NAME) $(SRO1) $(SRO2) $(SRO3) $(SRO4)
+	@echo "\033[38;5;214mDone!\033[0m"
 
-$(SRO1) $(SRO2) $(SRO3): $(SRC1) $(SRC2) $(SRC3)
-	gcc $(FLAGS) -c $(SRC1) $(SRC2) $(SRC3)
+$(SRO1) $(SRO2) $(SRO3) $(SRO4): $(SRC1) $(SRC2) $(SRC3) $(SRC4)
+	@echo "\033[38;5;214mCompiling...\033[0m"
+	@gcc $(FLAGS) -c $(SRC1) $(SRC2) $(SRC3) $(SRC4)
 
 re: fclean all
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\033[38;5;214mTargets removed!\033[0m"
 
 clean:
-	rm -f $(SRO1) $(SRO2) $(SRO3)
+	@rm -f $(SRO1) $(SRO2) $(SRO3) $(SRO4)
+	@echo "\033[38;5;214mObjects removed!\033[0m"
 
 run: $(NAME)
-	gcc $(FLAGS) $(TESTSRC)/$(file).c -o $(TESTBIN)/$(file) -I. -L. -lft
-	$(TESTBIN)/$(file)
+	@echo "\033[38;5;214mCompiling $(TESTSRC)/$(file).c ...\033[0m"
+	@gcc $(FLAGS) $(TESTSRC)/$(file).c -o $(TESTBIN)/$(file) -I. -L. -lft
+	@echo "\033[38;5;214mRunning $(TESTBIN)/$(file) ...\033[0m"
+	@$(TESTBIN)/$(file)

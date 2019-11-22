@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:43:06 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 20:10:12 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 20:28:56 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,17 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	const unsigned char	*source;
 	size_t				byte;
 
-	if (dst && src)
+	destination = dst;
+	source = src;
+	byte = 0;
+	while (byte < n)
 	{
-		destination = dst;
-		source = src;
-		byte = 0;
-		while (byte < n)
+		destination[byte] = source[byte];
+		if (source[byte] == (unsigned char)c)
 		{
-			destination[byte] = source[byte];
-			if (source[byte] == (unsigned char)c)
-			{
-				return (destination + byte + 1);
-			}
-			++byte;
+			return (destination + byte + 1);
 		}
+		++byte;
 	}
 	return (NULL);
 }

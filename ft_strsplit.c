@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 21:08:59 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/23 00:07:42 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 20:17:54 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	word_count(const char *str, char c)
 {
-	int count;
-	int reading;
+	size_t	count;
+	int		reading;
 
 	count = 0;
 	reading = FALSE;
@@ -30,7 +30,7 @@ static int	word_count(const char *str, char c)
 	return (count);
 }
 
-static void	split2array(char **data, const char *str, char c)
+static void	split_to_array(char **data, const char *str, char c)
 {
 	int			reading;
 	const char	*end;
@@ -43,8 +43,8 @@ static void	split2array(char **data, const char *str, char c)
 		{
 			reading = TRUE;
 			end = ft_strchr(str, c);
-			length = (end ? end - str : ft_strlen(str));
-			*data++ = ft_strsub(str, 0, length);
+			length = (end ? (size_t)(end - str) : ft_strlen(str));
+			*(data++) = ft_strsub(str, 0, length);
 		}
 		else if (reading && *str == c)
 			reading = FALSE;
@@ -65,6 +65,6 @@ char		**ft_strsplit(const char *str, char c)
 	ft_memset((void *)data, '\0', bytes);
 	if (bytes == sizeof(char *))
 		return (data);
-	split2array(data, str, c);
+	split_to_array(data, str, c);
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:22:20 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 20:12:47 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 20:27:06 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	const char	*source;
 	size_t		byte;
 
-	if (dst && src && (dst != src) && (n > 0))
+	if (dst != src)
 	{
 		destination = dst;
 		source = src;

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:01:54 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 20:19:41 by ngontjar         ###   ########.fr       */
+/*   Created: 2019/11/07 17:27:08 by ngontjar          #+#    #+#             */
+/*   Updated: 2019/11/08 20:39:30 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strrev(char *str)
+t_list	*ft_lstmap(t_list *head, t_list *(*func)(t_list *link))
 {
-	size_t	start;
-	size_t	end;
-	char	hold;
+	t_list	*start;
+	t_list	*link;
 
-	if (str != NULL)
+	start = NULL;
+	while (head != NULL && (link = func(head)) != NULL)
 	{
-		start = 0;
-		end = ft_strlen(str) - 1;
-		while (start < end)
-		{
-			hold = str[start];
-			str[start] = str[end];
-			str[end] = hold;
-			++start;
-			--end;
-		}
+		if (start == NULL)
+			start = link;
+		else
+			ft_lstadd_back(start, link);
+		head = head->next;
 	}
+	if (link == NULL && start != NULL)
+	{
+		ft_lstdel(&start, &ft_lstfree);
+	}
+	return (start);
 }

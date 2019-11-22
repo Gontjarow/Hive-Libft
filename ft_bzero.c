@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 14:53:29 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 20:09:23 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/22 19:45:27 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_bzero(void *dst, size_t n)
 {
 	if (n > 0)
 	{
-		ft_memset(dst, 0, n);
+		ft_memset(dst, '\0', n);
 	}
 }
