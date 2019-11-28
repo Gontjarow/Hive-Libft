@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 13:15:52 by ngontjar          #+#    #+#              #
-#    Updated: 2019/11/28 02:00:27 by ngontjar         ###   ########.fr        #
+#    Updated: 2019/11/28 13:30:24 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC2 = ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.
 
 SRC3 = ft_lstnew.c ft_lstadd.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c ft_lstmap.c
 
-SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c ft_sqrt_int.c ft_isprime.c ft_prime_nfactors.c ft_prime_factors.c ft_issquare_int.c
+SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c ft_sqrt_int.c ft_isprime.c ft_prime_nfactors.c ft_prime_factors.c ft_issquare_int.c ft_lcm.c ft_hcf.c
 
 SRO1 = $(subst .c,.o,$(SRC1))
 SRO2 = $(subst .c,.o,$(SRC2))
@@ -46,6 +46,7 @@ re: fclean all
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -rf $(TESTBIN)
 	@echo "\033[38;5;214mTargets removed!\033[0m"
 
 clean:
@@ -53,6 +54,7 @@ clean:
 	@echo "\033[38;5;214mObjects removed!\033[0m"
 
 test: $(NAME)
+	@mkdir -p $(TESTBIN)
 	@echo "\033[38;5;214mCompiling $(TESTSRC)/$(file).c ...\033[0m"
 	@gcc $(FLAGS) $(TESTSRC)/$(file).c -o $(TESTBIN)/$(file) -I. -L. -lft
 	@echo "\033[38;5;214mRunning $(TESTBIN)/$(file) ...\033[0m"
