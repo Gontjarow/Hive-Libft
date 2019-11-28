@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 21:08:59 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/22 20:17:54 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/28 15:44:29 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ char		**ft_strsplit(const char *str, char c)
 	char		**data;
 	size_t		bytes;
 
-	if (!str)
-		return (NULL);
-	bytes = (word_count(str, c) + 1) * sizeof(char *);
-	if (!(data = (char **)malloc(bytes)))
-		return (NULL);
-	ft_memset((void *)data, '\0', bytes);
-	if (bytes == sizeof(char *))
-		return (data);
-	split_to_array(data, str, c);
+	data = NULL;
+	if (str)
+	{
+		bytes = sizeof(char *) * (word_count(str, c) + 1);
+		if ((data = (char **)malloc(bytes)))
+		{
+			ft_memset((void *)data, '\0', bytes);
+			if (bytes > sizeof(char *))
+				split_to_array(data, str, c);
+		}
+	}
 	return (data);
 }
