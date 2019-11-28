@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/28 13:17:32 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:45:30 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define ABS(value) (((value) < 0) ? -(value) : (value))
 
 # define MAX_INT (2147483647)
-# define MIN_INT (-2147483647)
-# define UINT_MAX (4294967295)
+# define MIN_INT (-MAX_INT - 1)
+# define MAX_UINT (4294967295)
 
 # define TRUE (1)
 # define FALSE (0)
@@ -65,6 +65,7 @@ char			*ft_strtrim(const char *str);
 char			**ft_strsplit(const char *str, char c);
 int				*ft_range(int min, int max);
 char			*ft_itoa(int nbr);
+char			*ft_itoa_base(int number, int base);
 
 /*
 ** Memory modify, no allocation
