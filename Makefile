@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 13:15:52 by ngontjar          #+#    #+#              #
-#    Updated: 2019/11/28 01:45:38 by ngontjar         ###   ########.fr        #
+#    Updated: 2019/11/28 02:00:27 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ TESTBIN = ./test/bin
 
 FLAGS = -Wall -Wextra -Werror
 
-.PHONY: re fclean all objects run
+.PHONY: re fclean all objects test
 
 all: $(NAME)
 
@@ -52,7 +52,7 @@ clean:
 	@rm -f $(SRO1) $(SRO2) $(SRO3) $(SRO4)
 	@echo "\033[38;5;214mObjects removed!\033[0m"
 
-run: $(NAME)
+test: $(NAME)
 	@echo "\033[38;5;214mCompiling $(TESTSRC)/$(file).c ...\033[0m"
 	@gcc $(FLAGS) $(TESTSRC)/$(file).c -o $(TESTBIN)/$(file) -I. -L. -lft
 	@echo "\033[38;5;214mRunning $(TESTBIN)/$(file) ...\033[0m"
