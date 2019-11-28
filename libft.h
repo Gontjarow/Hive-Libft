@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/28 01:43:59 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/28 02:35:31 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <stdlib.h>
 
 # define ABS(value) (((value) < 0) ? -(value) : (value))
+
+# define MAX_INT (2147483647)
+# define MIN_INT (-2147483647)
+# define UINT_MAX (4294967295)
+
 # define TRUE (1)
 # define FALSE (0)
 # define ERROR (-1)
