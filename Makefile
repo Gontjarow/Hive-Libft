@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 13:15:52 by ngontjar          #+#    #+#              #
-#    Updated: 2019/11/28 14:29:41 by ngontjar         ###   ########.fr        #
+#    Updated: 2020/02/20 01:55:40 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,19 @@ TESTBIN = ./test/bin
 
 FLAGS = -Wall -Wextra -Werror
 
+MSG = \033[38;5;214m
+END = \033[0m
+
 .PHONY: re fclean all objects test
 
 all: $(NAME)
 
 $(NAME): $(SRO1) $(SRO2) $(SRO3) $(SRO4)
 	@ar -rc $(NAME) $(SRO1) $(SRO2) $(SRO3) $(SRO4)
-	@echo "\033[38;5;214mDone!\033[0m"
+	@echo "$(MSG)Done!$(END)"
 
 $(SRO1) $(SRO2) $(SRO3) $(SRO4): $(SRC1) $(SRC2) $(SRC3) $(SRC4)
-	@echo "\033[38;5;214mCompiling...\033[0m"
+	@echo "$(MSG)Compiling $(NAME)...$(END)"
 	@gcc $(FLAGS) -c $(SRC1) $(SRC2) $(SRC3) $(SRC4)
 
 re: fclean all
@@ -47,15 +50,15 @@ re: fclean all
 fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(TESTBIN)
-	@echo "\033[38;5;214mTargets removed!\033[0m"
+	@echo "$(MSG)$(NAME) targets removed!$(END)"
 
 clean:
 	@rm -f $(SRO1) $(SRO2) $(SRO3) $(SRO4)
-	@echo "\033[38;5;214mObjects removed!\033[0m"
+	@echo "$(MSG)$(NAME) objects removed!$(END)"
 
 test: $(NAME)
 	@mkdir -p $(TESTBIN)
-	@echo "\033[38;5;214mCompiling $(TESTSRC)/$(file).c ...\033[0m"
+	@echo "$(MSG)Compiling $(TESTSRC)/$(file).c ...$(END)"
 	@gcc $(FLAGS) $(TESTSRC)/$(file).c -o $(TESTBIN)/$(file) -I. -L. -lft
-	@echo "\033[38;5;214mRunning $(TESTBIN)/$(file) ...\033[0m"
+	@echo "$(MSG)Running $(TESTBIN)/$(file) ...$(END)"
 	@$(TESTBIN)/$(file)
