@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/20 03:57:04 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:15:57 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ t_list			*ft_lstmap(t_list *head, t_list *(*func)(t_list *link));
 /*
 ** Memory free
 */
+
 void			ft_memdel(void **ptr);
 void			ft_strdel(char **str);
 
 /*
 ** Memory allocation
 */
+
 void			*ft_realloc(void *ptr, size_t size);
 void			*ft_memalloc(size_t size);
 char			*ft_strnew(size_t size);
@@ -76,6 +78,7 @@ char			*ft_itoa_base(int number, int base);
 /*
 ** Memory modify, no allocation
 */
+
 void			*ft_memset(void *dst, int c, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -84,12 +87,14 @@ void			*ft_memmove(void *dst, const void *src, size_t n);
 /*
 ** Memory checking
 */
+
 void			*ft_memchr(const void *dst, int c, size_t n);
 int				ft_memcmp(const void *dst, const void *src, size_t n);
 
 /*
 ** Standard output
 */
+
 void			ft_putchar(char c);
 void			ft_putnbr(int nbr);
 void			ft_putstr(const char *str);
@@ -101,6 +106,7 @@ void			ft_print2dstr(char **array, size_t count);
 /*
 ** File output
 */
+
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(const char *str, int fd);
 void			ft_putendl_fd(const char *str, int fd);
@@ -109,6 +115,7 @@ void			ft_putnbr_fd(int nbr, int fd);
 /*
 ** Char checking
 */
+
 int				ft_isdigit(int c);
 int				ft_islower(int c);
 int				ft_isupper(int c);
@@ -118,10 +125,13 @@ int				ft_isprint(int c);
 int				ft_isascii(int c);
 int				ft_isspace(int c);
 int				ft_atoi(const char *str);
+long			atoi_base(const char *str, int base);
+int				check_base_prefix(char *str);
 
 /*
 ** String checking
 */
+
 size_t			ft_strclen(const char *str, int c);
 size_t			ft_strlen(const char *str);
 int				ft_strcmp(const char *str1, const char *str2);
@@ -136,6 +146,7 @@ char			*ft_strnstr(const char *haystack, const char *needle, size_t n);
 /*
 ** String modify, no allocation
 */
+
 void			ft_strclr(char *str);
 void			ft_bzero(void *dst, size_t n);
 char			*ft_strcpy(char *dst, const char *str);
@@ -153,6 +164,7 @@ void			ft_strrev(char *str);
 /*
 ** Math, no allocation
 */
+
 unsigned int	ft_lcm(unsigned int a, unsigned int b);
 unsigned int	ft_hcf(unsigned int a, unsigned int b);
 unsigned int	ft_sqrt_int(unsigned int number);
@@ -167,6 +179,7 @@ int				ft_numlen_base(long number, int base);
 /*
 ** Math, allocation
 */
+
 unsigned int	*ft_prime_factors(unsigned int number);
 
 #endif

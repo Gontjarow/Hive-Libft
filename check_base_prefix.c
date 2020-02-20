@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   check_base_prefix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 14:03:39 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/20 19:58:07 by ngontjar         ###   ########.fr       */
+/*   Created: 2020/02/20 20:12:38 by ngontjar          #+#    #+#             */
+/*   Updated: 2020/02/20 20:12:48 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int				check_base_prefix(char *str)
 {
-	unsigned int	number;
-	int				sign;
+	int		base;
+	size_t	length;
 
-	if (str == 0 || *str == '\0')
-		return (0);
 	while (ft_isspace(*str))
 		++str;
-	sign = 1;
-	while (*str == '-')
-	{
-		sign = -1;
+	while (*str == '-' || *str == '+')
 		++str;
-	}
-	while (*str == '+')
+	length = ft_strlen(str);
+	base = 10;
+	if (length == 1)
+		return (base);
+	if (str[0] == '0')
 	{
-		sign = 1;
-		++str;
+		if (str[1] == 'x' || str[1] == 'X')
+			base = 16;
+		else if (str[1] == 'b' || str[1] == 'B')
+			base = 2;
+		else if (ft_isdigit(str[1]))
+			base = 8;
 	}
-	number = 0;
-	while (ft_isdigit(*str))
-	{
-		number = (number * 10) + (*str - '0');
-		++str;
-	}
-	return (sign * number);
+	return (base);
 }

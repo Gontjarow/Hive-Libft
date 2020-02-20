@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 14:03:39 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/20 19:58:07 by ngontjar         ###   ########.fr       */
+/*   Created: 2020/02/20 20:13:10 by ngontjar          #+#    #+#             */
+/*   Updated: 2020/02/20 20:13:15 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+long			atoi_base(const char *str, int base)
 {
-	unsigned int	number;
-	int				sign;
+	long		number;
 
-	if (str == 0 || *str == '\0')
+	if ((str == 0 || *str == '\0') || (base != 0 && (base < 2 || base > 36)))
 		return (0);
 	while (ft_isspace(*str))
 		++str;
-	sign = 1;
-	while (*str == '-')
-	{
-		sign = -1;
+	if (base == 0)
+		base = check_base_prefix(*str);
+	if (base == 10)
+		return (ft_atoi(str));
+	while (*str == '-' || *str == '+')
 		++str;
-	}
-	while (*str == '+')
-	{
-		sign = 1;
-		++str;
-	}
 	number = 0;
-	while (ft_isdigit(*str))
+	while (ft_isdigit(*str) && (*str - '0') < base)
 	{
-		number = (number * 10) + (*str - '0');
+		number *= 10;
+		number += *str - '0';
 		++str;
 	}
-	return (sign * number);
+	return (number);
 }
