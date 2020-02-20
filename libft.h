@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/12/02 04:07:43 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/02/20 03:57:04 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 # define MIN_INT (-MAX_INT - 1)
 # define MAX_UINT (4294967295)
 
-# define PI 3.1415926535897932384626433832795f
-# define PI_BY_TWO 1.5707963267948966192313216916398f
-# define TWO_PI 6.283185307179586476925286766559f
-# define RAD_TO_DEG 57.295779513082320876798154814105f
-# define DEG_TO_RAD 0.017453292519943295769236907684886f
+# define PI (3.1415926535897932384626433832795f)
+# define PI_BY_TWO (1.5707963267948966192313216916398f)
+# define TWO_PI (6.283185307179586476925286766559f)
+# define RAD_TO_DEG (57.295779513082320876798154814105f)
+# define DEG_TO_RAD (0.017453292519943295769236907684886f)
 
 # define TRUE (1)
 # define FALSE (0)
@@ -160,6 +160,9 @@ unsigned int	ft_prime_nfactors(unsigned int number);
 
 unsigned int	ft_issquare_int(unsigned int number);
 unsigned int	ft_isprime(unsigned int number);
+
+int				ft_numlen(long number);
+int				ft_numlen_base(long number, int base);
 
 /*
 ** Math, allocation
