@@ -6,20 +6,18 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:12:38 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/20 20:12:48 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/02/21 03:57:16 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				check_base_prefix(char *str)
+int				check_base_prefix(const char *str)
 {
 	int		base;
 	size_t	length;
 
-	while (ft_isspace(*str))
-		++str;
-	while (*str == '-' || *str == '+')
+	while (*str == '-' || *str == '+' || ft_isspace(*str))
 		++str;
 	length = ft_strlen(str);
 	base = 10;

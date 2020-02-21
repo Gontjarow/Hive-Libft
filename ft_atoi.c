@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:03:39 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/20 19:58:07 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/02/21 03:31:26 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,9 @@ int		ft_atoi(const char *str)
 	while (ft_isspace(*str))
 		++str;
 	sign = 1;
-	while (*str == '-')
+	while (*str == '-' || *str == '+')
 	{
-		sign = -1;
-		++str;
-	}
-	while (*str == '+')
-	{
-		sign = 1;
+		sign = (*str == '-' ? -1 : 1);
 		++str;
 	}
 	number = 0;
