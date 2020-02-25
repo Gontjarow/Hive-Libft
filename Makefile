@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 13:15:52 by ngontjar          #+#    #+#              #
-#    Updated: 2020/02/20 20:13:58 by ngontjar         ###   ########.fr        #
+#    Updated: 2020/02/25 20:56:06 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRO4 = $(subst .c,.o,$(SRC4))
 TESTSRC = ./test
 TESTBIN = ./test/bin
 
-FLAGS = -Wall -Wextra #-Werror
+FLAGS = -g -Wall -Wextra #-Werror
 
 MSG = \033[38;5;214m
 END = \033[0m
