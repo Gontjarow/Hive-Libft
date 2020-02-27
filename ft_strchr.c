@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 17:04:42 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 20:41:08 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:48:48 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,18 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	char	*pointer;
-	size_t	length;
-	size_t	i;
+	size_t i;
+	size_t length;
 
-	pointer = NULL;
-	if (str != NULL)
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	length = ft_strlen(str);
+	while (i <= length)
 	{
-		length = ft_strlen(str) + 1;
-		i = 0;
-		c = (char)c;
-		while (i < length)
-		{
-			if (str[i] == c)
-			{
-				pointer = (char *)&str[i];
-				break ;
-			}
-			++i;
-		}
+		if (str[i] == c)
+			return (char *)(str + i);
+		++i;
 	}
-	return (pointer);
+	return (NULL);
 }

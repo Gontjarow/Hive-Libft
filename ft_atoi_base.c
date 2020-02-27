@@ -6,12 +6,11 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:13:10 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/21 06:00:33 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:49:56 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
 
 /*
 ** skip_prefix will determine which literal prefix a number string has, if any.
@@ -26,10 +25,14 @@ static int	skip_prefix(const char *str)
 	length = ft_strlen(str);
 	bytes = 0;
 	if (length > 2 && str[0] == '0')
+	{
 		if (str[1] == 'x' || str[1] == 'b' || str[1] == 'X' || str[1] == 'B')
 			bytes = 2;
+	}
 	else if (length > 1 && str[0] == '0')
+	{
 		bytes = 1;
+	}
 	return (bytes);
 }
 
@@ -45,7 +48,7 @@ static int	skip_prefix(const char *str)
 **	if a nonsensical base is specified ("123", 2), the behavior is undefined.
 */
 
-long	ft_atoi_base(const char *str, int base)
+long		ft_atoi_base(const char *str, int base)
 {
 	long	number;
 
