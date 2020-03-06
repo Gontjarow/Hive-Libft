@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/21 03:57:24 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/03/06 13:05:00 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ char			*ft_strmapi(const char *str, char (*f)(unsigned int, char));
 char			*ft_strtrim(const char *str);
 char			**ft_strsplit(const char *str, char c);
 int				*ft_range(int min, int max);
-char			*ft_itoa(int nbr);
-char			*ft_itoa_base(int number, int base);
+char			*ft_itoa(int number);
+char			*ft_itoa_base(uintmax_t number, int base);
 
 /*
 ** Memory modify, no allocation
