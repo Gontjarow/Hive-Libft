@@ -16,10 +16,32 @@
 
 int main()
 {
-	printf("0 = %s\n", ft_itoa(0));
-	printf("1 = %s\n", ft_itoa(1));
-	printf("-1 = %s\n", ft_itoa(-1));
-	printf("-1 = %s\n", ft_itoa(-123));
-	printf("2147483647 = %s\n", ft_itoa(INT_MAX));
-	printf("-2147483648 = %s\n", ft_itoa(INT_MIN));
+	printf("0\n%s\n", ft_itoa(0));
+	ft_putendl("");
+	printf("1\n%s\n", ft_itoa(1));
+	ft_putendl("");
+	printf("-1\n%s\n", ft_itoa(-1));
+	printf("-1 long\n%s\n", ft_itoa((long)-1));
+	printf("-1 long long\n%s\n", ft_itoa((long long)-1));
+	ft_putendl("");
+	printf("-123\n%s\n", ft_itoa(-123));
+	ft_putendl("");
+	printf("2147483647\n%s\n", ft_itoa(INT_MAX));
+	ft_putendl("");
+	printf("-2147483648\n%s\n", ft_itoa(INT_MIN));
+	ft_putendl("");
+	ft_putendl("UINT_MAX");
+	printf("%u\n%s\n", UINT_MAX, ft_itoa(UINT_MAX));
+	ft_putendl("");
+	ft_putendl("LONG_MAX");
+	printf("%ld\n%s\n", LONG_MAX, ft_itoa(LONG_MAX));
+	ft_putendl("");
+	ft_putendl("LONG_MIN");
+	printf("%ld\n%s\n", LONG_MIN, ft_itoa(LONG_MIN));
+	ft_putendl("");
+	ft_putendl("LLONG_MAX");
+	printf("%lld\n%s\n", LLONG_MAX, ft_itoa(LLONG_MAX));
+	ft_putendl("");
+	ft_putendl("LLONG_MIN");
+	printf("%lld\n%s\n", LLONG_MIN, ft_itoa(LLONG_MIN));
 }

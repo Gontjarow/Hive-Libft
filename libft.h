@@ -72,8 +72,8 @@ char			*ft_strmapi(const char *str, char (*f)(unsigned int, char));
 char			*ft_strtrim(const char *str);
 char			**ft_strsplit(const char *str, char c);
 int				*ft_range(int min, int max);
-char			*ft_itoa(int number);
-char			*ft_itoa_base(uintmax_t number, int base);
+char			*ft_itoa(long long number);
+char			*ft_itoa_base(long long number, int base);
 
 /*
 ** Memory modify, no allocation

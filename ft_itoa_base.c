@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-char	*ft_itoa_base(uintmax_t number, int base)
+char	*ft_itoa_base(long long number, int base)
 {
-	char			string[32 + 1];
-	unsigned int	num;
+	char			string[64 + 1];
+	long long		num;
 	unsigned int	mod;
 	unsigned int	i;
 

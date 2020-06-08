@@ -16,31 +16,48 @@
 
 int main()
 {
-	printf("15 > 2\t\t\t= %s\n", ft_itoa_base(15, 2));		// 1111
-	printf("15 > 16\t\t\t= %s\n", ft_itoa_base(15, 16));	// F
+	printf("15 > 2\n1111\n%s\n", ft_itoa_base(15, 2));		// 1111
+	ft_putendl("");
 
-	printf("777 > 2\t\t\t= %s\n", ft_itoa_base(777, 2));	// 1100001001
-	printf("777 > 16\t\t= %s\n", ft_itoa_base(777, 16));	// 309
+	printf("15 > 16\nF\n%s\n", ft_itoa_base(15, 16));	// F
+	ft_putendl("");
 
-	// 1111111111111111111111111111111
-	printf("%d > 2\t\t= %s\n", MAX_INT, ft_itoa_base(MAX_INT, 2));
-	printf("%d > 2\t\t= %s\n", MIN_INT, ft_itoa_base(MIN_INT, 2));
+	printf("777 > 2\n1100001001\n%s\n", ft_itoa_base(777, 2));	// 1100001001
+	ft_putendl("");
+
+	printf("777 > 16\n309\n%s\n", ft_itoa_base(777, 16));	// 309
+	ft_putendl("");
+
+	printf("%d > 2\n1111111111111111111111111111111\n%s\n", MAX_INT, ft_itoa_base(MAX_INT, 2));
+	ft_putendl("");
+
+	printf("%d > 2\n10000000000000000000000000000000\n%s\n", MIN_INT, ft_itoa_base(MIN_INT, 2));
+	ft_putendl("");
 
 	// 7FFFFFFF
-	printf("%d > 16\t\t= %s\n", MAX_INT, ft_itoa_base(MAX_INT, 16));
-	printf("%d > 16\t= %s\n", MIN_INT, ft_itoa_base(MIN_INT, 16));
+	printf("%d > 16\n7FFFFFFF\n%s\n", MAX_INT, ft_itoa_base(MAX_INT, 16));
+	ft_putendl("");
+	printf("%d > 16\n80000000\n%s\n", MIN_INT, ft_itoa_base(MIN_INT, 16));
+	ft_putendl("");
 
 	// ZIK0ZJ
-	printf("%d > 36\t\t= %s\n", MAX_INT, ft_itoa_base(MAX_INT, 36));
+	printf("%d > 36\nZIK0ZJ\n%s\n", MAX_INT, ft_itoa_base(MAX_INT, 36));
+	ft_putendl("");
 	// ZIK0ZK
-	printf("%d > 36\t= %s\n", MIN_INT, ft_itoa_base(MIN_INT, 36));
+	printf("%d > 36\nZIK0ZK\n%s\n", MIN_INT, ft_itoa_base(MIN_INT, 36));
+	ft_putendl("");
 
-	printf("10 > 10\t\t\t= %s\n", ft_itoa_base(10, 10)); // 10
-	printf("-10 > 10\t\t= %s\n", ft_itoa_base(-10, 10)); // -10
+	printf("10 > 10\n10\n%s\n", ft_itoa_base(10, 10)); // 10
+	ft_putendl("");
+
+	printf("-10 > 10\n-10\n%s\n", ft_itoa_base(-10, 10)); // -10
+	ft_putendl("");
 
 	// 2147483647
-	printf("%d > 10\t\t= %s\n", MAX_INT, ft_itoa_base(MAX_INT, 10));
+	printf("%d > 10\n2147483647\n%s\n", MAX_INT, ft_itoa_base(MAX_INT, 10));
+	ft_putendl("");
 
 	// -2147483647
-	printf("%d > 10\t= %s\n", MIN_INT, ft_itoa_base(MIN_INT, 10));
+	printf("%d > 10\n-2147483647\n%s\n", MIN_INT, ft_itoa_base(MIN_INT, 10));
+	ft_putendl("");
 }

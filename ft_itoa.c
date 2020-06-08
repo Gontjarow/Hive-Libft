@@ -12,23 +12,23 @@
 
 #include "libft.h"
 
-char	*ft_itoa(int num)
+char	*ft_itoa(long long number)
 {
-	char			string[11 + 1];
-	unsigned int	number;
-	unsigned int	length;
+	char				string[20 + 1];
+	unsigned long long	num;
+	unsigned int		length;
 
-	if (num == 0)
+	if (number == 0)
 		return (ft_strdup("0"));
-	ft_memset(string, 0, 12);
-	string[0] = (num < 0 ? '-' : '\0');
-	length = ft_numlen(num);
-	number = ABS(num);
+	ft_memset(string, 0, 21);
+	string[0] = '-';
+	length = ft_numlen(number);
+	num = ABS(number);
 	while (length--)
 	{
-		if (number)
-			string[length] = '0' + (number % 10);
-		number /= 10;
+		if (num)
+			string[length] = '0' + (num % 10);
+		num /= 10;
 	}
 	return (ft_strdup(string));
 }
