@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/03/06 13:05:00 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/19 01:19:01 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 # include <stdlib.h>
 
 # define ABS(value) (((value) < 0) ? -(value) : (value))
+# define MAX(v1, v2) ((v1) > (v2) ? (v1) : (v2))
+# define MIN(v1, v2) ((v1) < (v2) ? (v1) : (v2))
 
 # define MAX_INT (2147483647)
 # define MIN_INT (-MAX_INT - 1)
-# define MAX_UINT (4294967295)
+# define MAX_UINT (4294967295L)
 
 # define PI (3.1415926535897932384626433832795f)
 # define PI_BY_TWO (1.5707963267948966192313216916398f)
@@ -31,6 +33,29 @@
 # define TRUE (1)
 # define FALSE (0)
 # define ERROR (-1)
+# define NOT_FOUND (-1)
+
+# define TX_NORMAL  "\x1B[0m"
+# define TX_BOLD    "\x1B[1m"
+# define TX_UNDER   "\x1B[4m"
+
+# define FG_BLACK   "\x1B[30m"
+# define FG_RED     "\x1B[31m"
+# define FG_GREEN   "\x1B[32m"
+# define FG_YELLOW  "\x1B[33m"
+# define FG_BLUE    "\x1B[34m"
+# define FG_MAGENTA "\x1B[35m"
+# define FG_CYAN    "\x1B[36m"
+# define FG_WHITE   "\x1B[37m"
+
+# define BG_BLACK   "\x1B[40m"
+# define BG_RED     "\x1B[41m"
+# define BG_GREEN   "\x1B[42m"
+# define BG_YELLOW  "\x1B[43m"
+# define BG_BLUE    "\x1B[44m"
+# define BG_MAGENTA "\x1B[45m"
+# define BG_CYAN    "\x1B[46m"
+# define BG_WHITE   "\x1B[47m"
 
 typedef struct	s_list
 {
@@ -67,6 +92,7 @@ char			*ft_strnew(size_t size);
 char			*ft_strdup(const char *str);
 char			*ft_strsub(const char *str, unsigned int start, size_t len);
 char			*ft_strjoin(const char *dst, const char *str);
+char			*ft_strjoin_free(char *source, const char *append);
 char			*ft_strmap(const char *str, char (*f)(char));
 char			*ft_strmapi(const char *str, char (*f)(unsigned int, char));
 char			*ft_strtrim(const char *str);
@@ -102,6 +128,9 @@ void			ft_putendl(const char *str);
 void			ft_putstrn(const char *str, size_t n);
 void			ft_putstrn_nulls(const char *str, const char c, size_t n);
 void			ft_print2dstr(char **array, size_t count);
+void			ft_printlst(t_list *head);
+void			ft_printlst_endl(t_list *head);
+void			ft_putnotice(const char *str, const char *fg, const char *bg);
 
 /*
 ** File output
