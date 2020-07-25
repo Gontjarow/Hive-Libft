@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:36:21 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/03/06 13:07:04 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/25 05:58:57 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_itoa_base(long long number, int base)
 		return (ft_itoa(number));
 	i = 0;
 	string[i] = '0';
-	num = ABS(number);
+	num = (number < 0) ? -number : number;
 	while (num)
 	{
 		mod = num % base;

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 05:13:59 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/25 06:07:23 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <math.h>
 
 # ifdef __linux__
-typedef intptr_t uintptr_t;
+typedef intptr_t	uintptr_t;
 # endif
 
-# define ABS(value) (((value) < 0) ? -(value) : (value))
-# define MAX(v1, v2) ((v1) > (v2) ? (v1) : (v2))
-# define MIN(v1, v2) ((v1) < (v2) ? (v1) : (v2))
+/*
+** Forbidden, use snippets instead:
+** # define ABS(value) (((value) < 0) ? -(value) : (value))
+** # define MAX(v1, v2) ((v1) > (v2) ? (v1) : (v2))
+** # define MIN(v1, v2) ((v1) < (v2) ? (v1) : (v2))
+*/
 
 # define MAX_INT (2147483647)
 # define MIN_INT (-MAX_INT - 1)
@@ -106,6 +110,7 @@ char			**ft_strsplit(const char *str, char c);
 int				*ft_range(int min, int max);
 char			*ft_itoa(long long number);
 char			*ft_itoa_base(long long number, int base);
+char			*ft_ftoa(long double floating, unsigned char precision);
 
 /*
 ** Memory modify, no allocation

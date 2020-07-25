@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 02:08:13 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 05:05:22 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/25 05:58:40 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_numlen(long number)
 	if (number == 0)
 		return (1);
 	length = (number < 0);
-	number = ABS(number);
+	number = (number < 0) ? -number : number;
 	while (number)
 	{
 		++length;
@@ -38,7 +38,7 @@ int		ft_numlen(long number)
 ** "Am I stupid? Is this the correct way?"
 */
 
-int	ft_numlen_ul(unsigned long number)
+int		ft_numlen_ul(unsigned long number)
 {
 	int length;
 
