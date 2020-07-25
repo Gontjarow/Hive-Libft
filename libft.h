@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 03:42:10 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/25 04:23:21 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifdef __linux__
+typedef intptr_t uintptr_t;
+# endif
 
 # define ABS(value) (((value) < 0) ? -(value) : (value))
 # define MAX(v1, v2) ((v1) > (v2) ? (v1) : (v2))
