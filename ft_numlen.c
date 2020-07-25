@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 02:08:13 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 03:15:56 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/25 03:43:48 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int		ft_numlen_ull(unsigned long long number)
 
 	if (number == 0)
 		return (1);
-	length = (number < 0);
-	number = ABS(number);
+	length = 0;
 	while (number)
 	{
 		++length;
