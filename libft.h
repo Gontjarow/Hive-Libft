@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/03/06 13:05:00 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/25 03:24:30 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 
 # define MAX_INT (2147483647)
 # define MIN_INT (-MAX_INT - 1)
-# define MAX_UINT (4294967295)
+# define MAX_UINT ((unsigned int)-1)
+# define MAX_ULONG ((unsigned long)-1)
+# define MAX_ULLONG ((unsigned long long)-1)
 
 # define PI (3.1415926535897932384626433832795f)
 # define PI_BY_TWO (1.5707963267948966192313216916398f)
@@ -174,6 +176,7 @@ unsigned int	ft_issquare_int(unsigned int number);
 unsigned int	ft_isprime(unsigned int number);
 
 int				ft_numlen(long number);
+int				ft_numlen_ull(unsigned long long number);
 int				ft_numlen_base(long number, int base);
 
 /*
