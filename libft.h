@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 04:23:21 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/25 05:13:59 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ unsigned int	ft_issquare_int(unsigned int number);
 unsigned int	ft_isprime(unsigned int number);
 
 int				ft_numlen(long number);
+int				ft_numlen_ul(unsigned long number);
 int				ft_numlen_ull(unsigned long long number);
 int				ft_numlen_base(long number, int base);
 
