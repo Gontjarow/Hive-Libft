@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnotice.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 02:47:29 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/19 02:47:30 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/26 04:49:03 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@
 ** and the order is not explicit.
 */
 
-void	ft_putnotice(const char *str, const char *fg, const char *bg)
+size_t	ft_putnotice(const char *str, const char *fg, const char *bg)
 {
+	size_t length;
+
 	if (fg)
 		ft_putstr(fg);
 	if (bg)
 		ft_putstr(bg);
-	ft_putstr(str);
+	length = ft_putstr(str);
 	write(1, "\n", 1);
 	ft_putstr(TX_NORMAL);
+	return (length + 1);
 }

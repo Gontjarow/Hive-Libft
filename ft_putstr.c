@@ -3,19 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:52:22 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/10/29 20:23:09 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/26 05:11:47 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(const char *str)
+/*
+** If str == NULL, output placeholder.
+*/
+
+size_t	ft_putstr(const char *str)
 {
-	if (str != NULL)
+	size_t length;
+
+	if (str)
 	{
-		write(1, str, ft_strlen(str));
+		length = ft_strlen(str);
+		write(1, str, length);
 	}
+	else
+	{
+		length = 6;
+		write(1, "(null)", length);
+	}
+	return (length);
 }

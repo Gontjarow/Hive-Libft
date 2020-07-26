@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 06:07:23 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/26 04:49:07 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,14 +134,17 @@ int				ft_memcmp(const void *dst, const void *src, size_t n);
 
 void			ft_putchar(char c);
 void			ft_putnbr(int nbr);
-void			ft_putstr(const char *str);
-void			ft_putendl(const char *str);
-void			ft_putstrn(const char *str, size_t n);
-void			ft_putstrn_nulls(const char *str, const char c, size_t n);
+
+size_t			ft_putstr(const char *str);
+size_t			ft_putstrn(const char *str, size_t n);
+size_t			ft_putstrn_nulls(const char *str, const char c, size_t n);
+
+size_t			ft_putendl(const char *str);
+size_t			ft_putnotice(const char *str, const char *fg, const char *bg);
+
 void			ft_print2dstr(char **array, size_t count);
 void			ft_printlst(t_list *head);
 void			ft_printlst_endl(t_list *head);
-void			ft_putnotice(const char *str, const char *fg, const char *bg);
 
 /*
 ** File output

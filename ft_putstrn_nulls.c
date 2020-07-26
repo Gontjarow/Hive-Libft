@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstrn_nulls.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 14:39:57 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/04 16:35:44 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/26 04:46:23 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 ** should not be encountered in n bytes.
 */
 
-void	ft_putstrn_nulls(const char *str, const char c, size_t n)
+size_t	ft_putstrn_nulls(const char *str, const char c, size_t n)
 {
 	size_t		byte;
 
+	byte = 0;
 	if (str != NULL)
 	{
-		byte = 0;
 		while (byte < n)
 		{
 			if (!ft_isprint(str[byte]))
@@ -35,4 +35,5 @@ void	ft_putstrn_nulls(const char *str, const char c, size_t n)
 			++byte;
 		}
 	}
+	return (byte);
 }
