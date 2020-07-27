@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/26 08:09:14 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/27 15:19:38 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 # include <stdlib.h>
 # include <math.h>
 
+/*
+** uintptr_t
+*/
 
 # ifdef __linux__
-# include <stdint.h>
-// typedef intptr_t	uintptr_t;
-# endif
 
+#  include <stdint.h>
+# endif
 
 /*
 ** Forbidden, use snippets instead:
