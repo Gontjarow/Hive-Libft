@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:36:21 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 05:58:57 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/26 08:22:40 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_itoa_base(long long number, int base)
 		return (NULL);
 	if (base == 10)
 		return (ft_itoa(number));
+	if (number == 0)
+		return (ft_strdup("0"));
 	i = 0;
 	string[i] = '0';
 	num = (number < 0) ? -number : number;
