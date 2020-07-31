@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <niko.gontjarow@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/27 15:19:38 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/07/31 18:04:58 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int				ft_memcmp(const void *dst, const void *src, size_t n);
 ** Standard output
 */
 
-void			ft_putchar(char c);
+size_t			ft_putchar(char c);
 void			ft_putnbr(int nbr);
 
 size_t			ft_putstr(const char *str);
