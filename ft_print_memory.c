@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 02:40:10 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/16 04:25:31 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/16 04:27:57 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		ft_print_memory(const void *addr, size_t size)
 	data = (unsigned char *)addr;
 	byte = 0;
 	show = 0;
-	write_header(data, size);
+	write_header(data);
 	while (byte < size)
 	{
 		write_hex(data[byte++]);
