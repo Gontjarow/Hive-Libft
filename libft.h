@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <niko.gontjarow@gmail.com>        +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/31 18:04:58 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/16 02:48:09 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ size_t			ft_putnotice(const char *str, const char *fg, const char *bg);
 void			ft_print2dstr(char **array, size_t count);
 void			ft_printlst(t_list *head);
 void			ft_printlst_endl(t_list *head);
+void			ft_print_memory(const void *addr, size_t size);
 
 /*
 ** File output
