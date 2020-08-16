@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/16 02:48:09 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/16 03:46:39 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,8 @@ int				ft_numlen(long number);
 int				ft_numlen_ul(unsigned long number);
 int				ft_numlen_ull(unsigned long long number);
 int				ft_numlen_base(long number, int base);
+
+int				ft_clamp(int in, int low, int high);
 
 /*
 ** Math, allocation
