@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 02:40:10 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/16 03:05:35 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/16 04:25:31 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	write_hex(size_t number)
 **	ft_printf("%lu %.*s at %p:\n", size, 4 + (size > 1), "bytes", data);
 */
 
-static void	write_header(unsigned char *data, size_t size)
+static void	write_header(unsigned char *data)
 {
 	write(1, "                                                    | ", 54);
 	write(1, "@ 0x", 4);
