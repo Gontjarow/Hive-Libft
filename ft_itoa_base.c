@@ -6,35 +6,40 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:36:21 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/26 08:22:40 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/16 04:23:06 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** Handles everything except base-10
+**	because of the negative sign.
+*/
+
 char	*ft_itoa_base(long long number, int base)
 {
 	char			string[64 + 1];
-	long long		num;
+	long long		digits;
+	unsigned int	index;
 	unsigned int	mod;
-	unsigned int	i;
 
-	if (base < 2 || base > 36)
-		return (NULL);
-	if (base == 10)
-		return (ft_itoa(number));
 	if (number == 0)
 		return (ft_strdup("0"));
-	i = 0;
-	string[i] = '0';
-	num = (number < 0) ? -number : number;
-	while (num)
+	if (base == 10)
+		return (ft_itoa(number));
+	base = ft_clamp(base, 2, 36);
+	number = (number < 0) ? -number : number;
+	digits = number;
+	index = 0;
+	while (digits)
+		(++index) && (digits /= base);
+	string[index] = '\0';
+	while (~--index)
 	{
-		mod = num % base;
-		string[i++] = (mod > 9 ? 'A' + (mod - 10) : '0' + mod);
-		num /= base;
+		mod = number % base;
+		string[index] = (mod < 10) ? ('0' + mod) : ('A' + (mod - 10));
+		number /= base;
 	}
-	string[i] = '\0';
-	ft_strrev(string);
 	return (ft_strdup(string));
 }
