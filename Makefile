@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 13:15:52 by ngontjar          #+#    #+#              #
-#    Updated: 2020/08/16 03:48:59 by ngontjar         ###   ########.fr        #
+#    Updated: 2020/08/23 06:53:07 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,18 @@ SRC2 = ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.
 
 SRC3 = ft_lstnew.c ft_lstadd.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c ft_lstmap.c
 
-SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c ft_sqrt_int.c ft_isprime.c ft_prime_nfactors.c ft_prime_factors.c ft_issquare_int.c ft_lcm.c ft_hcf.c ft_itoa_base.c ft_numlen.c ft_numlen_base.c check_base_prefix.c ft_atoi_base.c ft_strjoin_free.c ft_putnotice.c ft_printlst.c ft_ftoa.c ft_print_memory.c ft_clamp.c
+SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c ft_sqrt_int.c ft_isprime.c ft_prime_nfactors.c ft_prime_factors.c ft_issquare_int.c ft_lcm.c ft_hcf.c ft_itoa_base.c ft_numlen.c ft_numlen_base.c ft_base_prefix.c ft_atoi_base.c ft_strjoin_free.c ft_putnotice.c ft_printlst.c ft_ftoa.c ft_print_memory.c ft_clamp.c ft_putstr_case.c ft_putstrn_case.c ft_strany.c ft_utoa.c ft_utoa_base.c
+
+SRC_PRINTF = ft_printf.c parse_format.c output_char.c output_float.c output_int.c output_octal.c output_pointer.c output_string.c output_uint.c output_unsigned.c utils.c
 
 SRO1 = $(subst .c,.o,$(SRC1))
 SRO2 = $(subst .c,.o,$(SRC2))
 SRO3 = $(subst .c,.o,$(SRC3))
 SRO4 = $(subst .c,.o,$(SRC4))
+SRO_PRINTF = $(subst .c,.o,$(SRC_PRINTF))
+# SRC_PRINTF = $(addprefix printf/,$(SRC_PRINTF))
+
+COMPILE_PRINTF = gcc -c $(addprefix printf/,$(SRC_PRINTF)) printf/ft_printf.h libft.h -L. -lft
 
 TESTSRC = ./test
 TESTBIN = ./test/bin
@@ -39,6 +45,8 @@ all: $(NAME)
 
 $(NAME): $(SRO1) $(SRO2) $(SRO3) $(SRO4)
 	@ar -rc $(NAME) $(SRO1) $(SRO2) $(SRO3) $(SRO4)
+	@$(COMPILE_PRINTF)
+	@ar -rc $(NAME) $(SRO_PRINTF)
 	@echo "$(MSG)Done!$(END)"
 
 $(SRO1) $(SRO2) $(SRO3) $(SRO4): $(SRC1) $(SRC2) $(SRC3) $(SRC4)
@@ -53,7 +61,8 @@ fclean: clean
 	@echo "$(MSG)$(NAME) targets removed!$(END)"
 
 clean:
-	@rm -f $(SRO1) $(SRO2) $(SRO3) $(SRO4)
+	@rm -f $(SRO1) $(SRO2) $(SRO3) $(SRO4) $(SRO_PRINTF)
+	@rm -f libft.h.gch printf/ft_printf.h.gch
 	@echo "$(MSG)$(NAME) objects removed!$(END)"
 
 test: $(NAME)

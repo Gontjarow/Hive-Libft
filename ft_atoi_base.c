@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:13:10 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/27 17:49:56 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/23 06:04:21 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ long		ft_atoi_base(const char *str, int base)
 	while (ft_isspace(*str))
 		++str;
 	if (base == 0)
-		base = check_base_prefix(str);
+		base = ft_base_prefix(str);
 	if (base == 10)
 		return (ft_atoi(str));
 	while (*str == '-' || *str == '+')

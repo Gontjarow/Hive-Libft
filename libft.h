@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/16 03:46:39 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/23 06:50:16 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ int				*ft_range(int min, int max);
 char			*ft_itoa(long long number);
 char			*ft_itoa_base(long long number, int base);
 char			*ft_ftoa(long double floating, unsigned char precision);
+char			*ft_utoa(unsigned long long number);
+char			*ft_utoa_base(unsigned long long number, int base);
 
 /*
 ** Memory modify, no allocation
@@ -143,6 +145,8 @@ void			ft_putnbr(int nbr);
 size_t			ft_putstr(const char *str);
 size_t			ft_putstrn(const char *str, size_t n);
 size_t			ft_putstrn_nulls(const char *str, const char c, size_t n);
+size_t			ft_putstr_case(const char *str, int mode);
+size_t			ft_putstrn_case(const char *str, size_t n, int mode);
 
 size_t			ft_putendl(const char *str);
 size_t			ft_putnotice(const char *str, const char *fg, const char *bg);
@@ -151,6 +155,8 @@ void			ft_print2dstr(char **array, size_t count);
 void			ft_printlst(t_list *head);
 void			ft_printlst_endl(t_list *head);
 void			ft_print_memory(const void *addr, size_t size);
+
+int				ft_printf(const char *format, ...);
 
 /*
 ** File output
@@ -175,7 +181,10 @@ int				ft_isascii(int c);
 int				ft_isspace(int c);
 int				ft_atoi(const char *str);
 long			ft_atoi_base(const char *str, int base);
-int				check_base_prefix(const char *str);
+int				ft_base_prefix(const char *str);
+char			*ft_strany(const char *string, char *specifiers);
+char			*ft_strany_skip(const char *string, char *specifiers);
+char			*ft_strchr_skip(const char *string, char specifier);
 
 /*
 ** String checking

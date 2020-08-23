@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_base_prefix.c                                :+:      :+:    :+:   */
+/*   ft_base_prefix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:12:38 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/02/21 03:57:16 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/23 06:04:21 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				check_base_prefix(const char *str)
+int				ft_base_prefix(const char *str)
 {
 	int		base;
 	size_t	length;
