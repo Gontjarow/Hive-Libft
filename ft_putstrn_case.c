@@ -6,13 +6,13 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 05:19:58 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/23 05:20:38 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/23 06:16:18 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t			putstrn_case(const char *str, size_t n, int mode)
+size_t			ft_putstrn_case(const char *str, size_t n, int mode)
 {
 	size_t	i;
 	char	c;
@@ -28,6 +28,6 @@ size_t			putstrn_case(const char *str, size_t n, int mode)
 		}
 	}
 	else
-		return (putstr_case("(null)", mode));
+		return (ft_putstr_case("(null)", mode));
 	return (i);
 }

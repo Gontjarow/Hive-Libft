@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 20:15:20 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/23 05:18:19 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/23 06:13:45 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** returns a pointer to the first matching character specifier(s).
 */
 
-char	*strany(const char *string, char *specifiers)
+char	*ft_strany(const char *string, char *specifiers)
 {
 	size_t a;
 	size_t b;
@@ -40,7 +40,7 @@ char	*strany(const char *string, char *specifiers)
 ** returns a pointer to the first non-matching character specifier.
 */
 
-char	*strany_skip(const char *string, char *specifiers)
+char	*ft_strany_skip(const char *string, char *specifiers)
 {
 	size_t	a;
 	size_t	b;
@@ -71,7 +71,7 @@ char	*strany_skip(const char *string, char *specifiers)
 ** returns a pointer to the first matching character specifier.
 */
 
-char	*strchr_skip(const char *string, char specifier)
+char	*ft_strchr_skip(const char *string, char specifier)
 {
 	size_t i;
 

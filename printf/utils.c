@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_case.c                                   :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/23 05:19:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/23 06:16:18 by ngontjar         ###   ########.fr       */
+/*   Created: 2020/02/18 21:07:10 by ngontjar          #+#    #+#             */
+/*   Updated: 2020/08/23 05:56:53 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t			ft_putstr_case(const char *str, int mode)
+void			width_padder(int w, const char c, t_data *flag)
 {
-	size_t	i;
-	size_t	length;
-	char	c;
-
-	if (mode == 0)
-		return (ft_putstr(str));
-	else
+	while (w > 0)
 	{
-		if (str)
-		{
-			length = ft_strlen(str);
-			i = 0;
-			while (str[i])
-			{
-				c = (mode < 0) ? ft_tolower(str[i]) : ft_toupper(str[i]);
-				write(1, &c, 1);
-				++i;
-			}
-		}
-		else
-			return (ft_putstr_case("(null)", mode));
+		write(1, &c, 1);
+		++flag->written;
+		--w;
 	}
-	return (length);
 }
