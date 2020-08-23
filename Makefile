@@ -6,7 +6,7 @@
 #    By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 13:15:52 by ngontjar          #+#    #+#              #
-#    Updated: 2020/08/23 05:12:35 by ngontjar         ###   ########.fr        #
+#    Updated: 2020/08/23 05:57:47 by ngontjar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC2 = ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.
 
 SRC3 = ft_lstnew.c ft_lstadd.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c ft_lstmap.c
 
-SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c ft_sqrt_int.c ft_isprime.c ft_prime_nfactors.c ft_prime_factors.c ft_issquare_int.c ft_lcm.c ft_hcf.c ft_itoa_base.c ft_numlen.c ft_numlen_base.c ft_check_base_prefix.c ft_atoi_base.c ft_strjoin_free.c ft_putnotice.c ft_printlst.c ft_ftoa.c ft_print_memory.c ft_clamp.c
+SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c ft_sqrt_int.c ft_isprime.c ft_prime_nfactors.c ft_prime_factors.c ft_issquare_int.c ft_lcm.c ft_hcf.c ft_itoa_base.c ft_numlen.c ft_numlen_base.c ft_base_prefix.c ft_atoi_base.c ft_strjoin_free.c ft_putnotice.c ft_printlst.c ft_ftoa.c ft_print_memory.c ft_clamp.c ft_putstr_case ft_putstrn_case.c ft_strany.c ft_utoa.c ft_utoa_base.c
 
 SRO1 = $(subst .c,.o,$(SRC1))
 SRO2 = $(subst .c,.o,$(SRC2))
