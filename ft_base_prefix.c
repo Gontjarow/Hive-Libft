@@ -6,13 +6,13 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:12:38 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/23 05:13:39 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/23 06:04:21 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				check_base_prefix(const char *str)
+int				ft_base_prefix(const char *str)
 {
 	int		base;
 	size_t	length;

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/16 03:46:39 by ngontjar         ###   ########.fr       */
+/*   Updated: 2020/08/23 06:04:21 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ int				ft_isascii(int c);
 int				ft_isspace(int c);
 int				ft_atoi(const char *str);
 long			ft_atoi_base(const char *str, int base);
-int				check_base_prefix(const char *str);
+int				ft_base_prefix(const char *str);
 
 /*
 ** String checking
