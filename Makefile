@@ -10,64 +10,83 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+# https://www.gnu.org/software/make/manual/make.html
+# http://nuclear.mutantstargoat.com/articles/make/#multiple-source-directories
+# https://www.oreilly.com/library/view/managing-projects-with/0596006101/ch12.html
 
-SRC1 = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c
+NAME := libft.a
 
-SRC2 = ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+SRC_DIR := ./src
+OBJ_DIR := ./obj
+DEP_DIR := $(OBJ_DIR)
+INC_DIRS := . $(SRC_DIR)
 
-SRC3 = ft_lstnew.c ft_lstadd.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c ft_lstmap.c
+SRC_TEST = ./test
+TEST_DIR = $(SRC_TEST)/bin
 
-SRC4 = ft_islower.c ft_isupper.c ft_isspace.c ft_putstrn.c ft_strrev.c ft_print2dstr.c ft_range.c ft_strlcpy.c ft_putstrn_nulls.c ft_strclen.c ft_lstfree.c ft_lstadd_back.c ft_sqrt_int.c ft_isprime.c ft_prime_nfactors.c ft_prime_factors.c ft_issquare_int.c ft_lcm.c ft_hcf.c ft_itoa_base.c ft_numlen.c ft_numlen_base.c ft_base_prefix.c ft_atoi_base.c ft_strjoin_free.c ft_putnotice.c ft_printlst.c ft_ftoa.c ft_print_memory.c ft_clamp.c ft_putstr_case.c ft_putstrn_case.c ft_strany.c ft_utoa.c ft_utoa_base.c
+# CC:        Program for compiling C programs; default cc
+# CFLAGS:    Extra flags to give to the C compiler
+# CPPFLAGS:  Extra flags to give to the C preprosessor
+# LDFLAGS:   Extra flags to give to compilers when they are supposed to invoke the linker
 
-SRC_PRINTF = ft_printf.c parse_format.c output_char.c output_float.c output_int.c output_octal.c output_pointer.c output_string.c output_uint.c output_unsigned.c utils.c
+CC := gcc
+INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+CFLAGS := $(INC_FLAGS) -MMD -MP -g -Wall -Wextra
 
-SRO1 = $(subst .c,.o,$(SRC1))
-SRO2 = $(subst .c,.o,$(SRC2))
-SRO3 = $(subst .c,.o,$(SRC3))
-SRO4 = $(subst .c,.o,$(SRC4))
-SRO_PRINTF = $(subst .c,.o,$(SRC_PRINTF))
-# SRC_PRINTF = $(addprefix printf/,$(SRC_PRINTF))
+SRC_BASE := $(wildcard $(SRC_DIR)/*.c)
+SRC_PRINTF := $(wildcard $(SRC_DIR)/printf/*.c)
 
-COMPILE_PRINTF = gcc -c $(addprefix printf/,$(SRC_PRINTF)) printf/ft_printf.h libft.h -L. -lft
+# Pattern substitution
+# Syntax:     $(patsubst pattern,replacement,text)
+# Shorthand:  $(text:pattern=replacement)
+# Wildcard (preserved): %
 
-TESTSRC = ./test
-TESTBIN = ./test/bin
+OBJ_BASE := $(SRC_BASE:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ_PRINTF := $(SRC_PRINTF:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+DEP_BASE := $(OBJ_BASE:.o=.d)
+DEP_PRINTF := $(OBJ_PRINTF:.o=.d)
 
-FLAGS = -g -Wall -Wextra #-Werror
+# COMPILE_PRINTF = gcc -c $(addprefix printf/,$(SRC_PRINTF)) printf/ft_printf.h libft.h -L. -lft
 
 MSG = \033[38;5;214m
 END = \033[0m
 
-.PHONY: re fclean all objects test
+.PHONY: all re fclean clean test
+
+# target name:          $@
+# prerequisites:        $^
+# newer-than-target:    $?
 
 all: $(NAME)
 
-$(NAME): $(SRO1) $(SRO2) $(SRO3) $(SRO4)
-	@ar -rc $(NAME) $(SRO1) $(SRO2) $(SRO3) $(SRO4)
-	@$(COMPILE_PRINTF)
-	@ar -rc $(NAME) $(SRO_PRINTF)
-	@echo "$(MSG)Done!$(END)"
+$(NAME): $(OBJ_BASE)
+	@ar -rc $@ $^
+	# @$(COMPILE_PRINTF)
+	# @ar -rc $(NAME) $(SRO_PRINTF)
+	# @echo "$(MSG)Done!$(END)"
 
-$(SRO1) $(SRO2) $(SRO3) $(SRO4): $(SRC1) $(SRC2) $(SRC3) $(SRC4)
-	@echo "$(MSG)Compiling $(NAME)...$(END)"
-	@gcc $(FLAGS) -c $(SRC1) $(SRC2) $(SRC3) $(SRC4)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@echo "$(MSG)Compiling $(notdir $@)$(END)"
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 re: fclean all
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -rf $(TESTBIN)
+	# @rm -rf $(TEST_DIR)
 	@echo "$(MSG)$(NAME) targets removed!$(END)"
 
 clean:
-	@rm -f $(SRO1) $(SRO2) $(SRO3) $(SRO4) $(SRO_PRINTF)
+	@rm -rf $(OBJ_DIR)
 	@rm -f libft.h.gch printf/ft_printf.h.gch
 	@echo "$(MSG)$(NAME) objects removed!$(END)"
 
-test: $(NAME)
-	@mkdir -p $(TESTBIN)
-	@echo "$(MSG)Compiling $(TESTSRC)/$(file).c ...$(END)"
-	@gcc $(FLAGS) $(TESTSRC)/$(file).c -o $(TESTBIN)/$(file) -I. -L. -lft
-	@echo "$(MSG)Running $(TESTBIN)/$(file) ...$(END)"
-	@$(TESTBIN)/$(file)
+# test: $(NAME)
+# 	@mkdir -p $(TEST_DIR)
+# 	@echo "$(MSG)Compiling $(SRC_TEST)/$(file).c ...$(END)"
+# 	@gcc $(FLAGS) $(SRC_TEST)/$(file).c -o $(TEST_DIR)/$(file) -I. -L. -lft
+# 	@echo "$(MSG)Running $(TEST_DIR)/$(file) ...$(END)"
+# 	@$(TEST_DIR)/$(file)
+
+-include $(DEP_BASE)
