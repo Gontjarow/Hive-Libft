@@ -60,7 +60,7 @@ END = \033[0m
 # newer-than-target:    $?
 
 all: $(NAME) $(PRINTF)
-	ar -rc $(NAME) $(OBJ_PRINTF)
+	@ar -rc $(NAME) $(OBJ_PRINTF)
 	@echo "$(OK)OK:\tAll done!$(END)"
 
 $(NAME): $(OBJ_BASE)
@@ -73,12 +73,12 @@ $(PRINTF): $(OBJ_PRINTF)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@echo "$(MSG)libft\t $(notdir $@)$(END)"
+	@echo "$(MSG)libft\t $(notdir $<)$(END)"
 	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/printf/%.c
 	@mkdir -p $(dir $@)
-	@echo "$(MSG)printf\t $(notdir $@)$(END)"
+	@echo "$(MSG)printf\t $(notdir $<)$(END)"
 	@$(CC) $(CPPFLAGS) -I$(SRC_DIR)/printf $(CFLAGS) -L. -lft -c $< -o $@
 
 re: fclean all
@@ -99,7 +99,7 @@ clean:
 test: all
 	@mkdir -p $(TEST_DIR)
 	@echo "$(MSG)Compiling $(SRC_TEST)/$(file).c ...$(END)"
-	@gcc $(CFLAGS) $(SRC_TEST)/$(file).c -o $(TEST_DIR)/$(file) -I. -L. -lft
+	@$(CC) $(CFLAGS) $(SRC_TEST)/$(file).c -L. -lft -o $(TEST_DIR)/$(file)
 	@echo "$(MSG)Running $(TEST_DIR)/$(file) ...$(END)"
 	@$(TEST_DIR)/$(file)
 
