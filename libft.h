@@ -101,7 +101,7 @@ void			ft_strdel(char **str);
 ** Memory allocation
 */
 
-void			*ft_realloc(void *ptr, size_t size);
+void			*ft_realloc(void *ptr, size_t new_size, size_t old_size);
 void			*ft_memalloc(size_t size);
 char			*ft_strnew(size_t size);
 char			*ft_strdup(const char *str);

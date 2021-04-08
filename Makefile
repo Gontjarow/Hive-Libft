@@ -15,6 +15,7 @@
 # https://www.oreilly.com/library/view/managing-projects-with/0596006101/ch12.html
 
 NAME := libft.a
+PRINTF := printf.a
 
 SRC_DIR := ./src
 OBJ_DIR := ./obj
@@ -33,60 +34,72 @@ CC := gcc
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 CFLAGS := $(INC_FLAGS) -MMD -MP -g -Wall -Wextra
 
-SRC_BASE := $(wildcard $(SRC_DIR)/*.c)
-SRC_PRINTF := $(wildcard $(SRC_DIR)/printf/*.c)
-
 # Pattern substitution
 # Syntax:     $(patsubst pattern,replacement,text)
 # Shorthand:  $(text:pattern=replacement)
 # Wildcard (preserved): %
 
+SRC_BASE := $(wildcard $(SRC_DIR)/*.c)
 OBJ_BASE := $(SRC_BASE:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-OBJ_PRINTF := $(SRC_PRINTF:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEP_BASE := $(OBJ_BASE:.o=.d)
-DEP_PRINTF := $(OBJ_PRINTF:.o=.d)
 
-# COMPILE_PRINTF = gcc -c $(addprefix printf/,$(SRC_PRINTF)) printf/ft_printf.h libft.h -L. -lft
+SRC_PRINTF := $(wildcard $(SRC_DIR)/printf/*.c)
+OBJ_PRINTF := $(SRC_PRINTF:$(SRC_DIR)/printf/%.c=$(OBJ_DIR)/%.o)
+DEP_PRINTF := $(OBJ_PRINTF:.o=.d)
 
 MSG = \033[38;5;214m
 END = \033[0m
 
 .PHONY: all re fclean clean test
 
+# Automatic variables
 # target name:          $@
-# prerequisites:        $^
+# all prerequisites:    $^
+# first prerequisite:   $<
 # newer-than-target:    $?
 
-all: $(NAME)
+all: $(NAME) $(PRINTF)
+	@ar -rc $(NAME) $(PRINTF)
+	@echo "$(MSG)All done!$(END)"
 
 $(NAME): $(OBJ_BASE)
 	@ar -rc $@ $^
-	# @$(COMPILE_PRINTF)
-	# @ar -rc $(NAME) $(SRO_PRINTF)
-	# @echo "$(MSG)Done!$(END)"
+	@echo "$(MSG)Base done!$(END)"
+
+$(PRINTF): $(OBJ_PRINTF)
+	@ar -rc $@ $^
+	@echo "$(MSG)Prinf done!$(END)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@echo "$(MSG)Compiling $(notdir $@)$(END)"
 	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/printf/%.c
+	@mkdir -p $(dir $@)
+	@echo "$(MSG)Compiling printf $(notdir $@)$(END)"
+	@$(CC) $(CPPFLAGS) -I$(SRC_DIR)/printf $(CFLAGS) -L. -lft -c $< -o $@
+
 re: fclean all
 
 fclean: clean
 	@rm -f $(NAME)
-	# @rm -rf $(TEST_DIR)
-	@echo "$(MSG)$(NAME) targets removed!$(END)"
+	@rm -f $(PRINTF)
+	@rm -rf $(TEST_DIR)
+	@echo "$(MSG)Archives and tests removed!$(END)"
 
 clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -f libft.h.gch printf/ft_printf.h.gch
-	@echo "$(MSG)$(NAME) objects removed!$(END)"
+	@echo "$(MSG)Objects and precompiled headers removed removed!$(END)"
 
-# test: $(NAME)
-# 	@mkdir -p $(TEST_DIR)
-# 	@echo "$(MSG)Compiling $(SRC_TEST)/$(file).c ...$(END)"
-# 	@gcc $(FLAGS) $(SRC_TEST)/$(file).c -o $(TEST_DIR)/$(file) -I. -L. -lft
-# 	@echo "$(MSG)Running $(TEST_DIR)/$(file) ...$(END)"
-# 	@$(TEST_DIR)/$(file)
+# Usage: make test file=putendl
+
+test: all
+	@mkdir -p $(TEST_DIR)
+	@echo "$(MSG)Compiling $(SRC_TEST)/$(file).c ...$(END)"
+	@gcc $(CFLAGS) $(SRC_TEST)/$(file).c -o $(TEST_DIR)/$(file) -I. -L. -lft
+	@echo "$(MSG)Running $(TEST_DIR)/$(file) ...$(END)"
+	@$(TEST_DIR)/$(file)
 
 -include $(DEP_BASE)
