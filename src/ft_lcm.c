@@ -14,7 +14,7 @@
 
 unsigned int	ft_lcm(unsigned int a, unsigned int b)
 {
-	unsigned int result;
+	unsigned int	result;
 
 	result = 0;
 	if (a && b)

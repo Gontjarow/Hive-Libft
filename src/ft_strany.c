@@ -18,8 +18,8 @@
 
 char	*ft_strany(const char *string, char *specifiers)
 {
-	size_t a;
-	size_t b;
+	size_t	a;
+	size_t	b;
 
 	a = 0;
 	while (string[a])
@@ -28,7 +28,7 @@ char	*ft_strany(const char *string, char *specifiers)
 		while (specifiers[b])
 		{
 			if (string[a] == specifiers[b])
-				return (char *)(&string[a]);
+				return ((char *)(&string[a]));
 			++b;
 		}
 		++a;
@@ -61,7 +61,7 @@ char	*ft_strany_skip(const char *string, char *specifiers)
 			++b;
 		}
 		if (skip == FALSE)
-			return (char *)(&string[a]);
+			return ((char *)(&string[a]));
 		++a;
 	}
 	return (NULL);
@@ -73,13 +73,13 @@ char	*ft_strany_skip(const char *string, char *specifiers)
 
 char	*ft_strchr_skip(const char *string, char specifier)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (string[i])
 	{
 		if (string[i] != specifier)
-			return (char *)(string + i);
+			return ((char *)(string + i));
 		++i;
 	}
 	return (NULL);

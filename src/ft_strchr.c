@@ -14,8 +14,8 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	size_t i;
-	size_t length;
+	size_t	i;
+	size_t	length;
 
 	if (str == NULL)
 		return (NULL);
@@ -24,7 +24,7 @@ char	*ft_strchr(const char *str, int c)
 	while (i <= length)
 	{
 		if (str[i] == c)
-			return (char *)(str + i);
+			return ((char *)(str + i));
 		++i;
 	}
 	return (NULL);

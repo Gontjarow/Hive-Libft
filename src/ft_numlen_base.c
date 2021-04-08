@@ -17,9 +17,9 @@
 ** -2147483648, 2147483647, 4294967295
 */
 
-int		ft_numlen_base(long number, int base)
+int	ft_numlen_base(long number, int base)
 {
-	int length;
+	int	length;
 
 	if (number == 0)
 		return (1);

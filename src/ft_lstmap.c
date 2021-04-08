@@ -18,7 +18,8 @@ t_list	*ft_lstmap(t_list *head, t_list *(*func)(t_list *link))
 	t_list	*link;
 
 	start = NULL;
-	while (head != NULL && (link = func(head)) != NULL)
+	link = func(head);
+	while (head != NULL && link != NULL)
 	{
 		if (start == NULL)
 			start = link;

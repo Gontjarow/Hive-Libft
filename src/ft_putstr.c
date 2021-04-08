@@ -18,7 +18,7 @@
 
 size_t	ft_putstr(const char *str)
 {
-	size_t length;
+	size_t	length;
 
 	if (str)
 	{

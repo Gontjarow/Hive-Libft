@@ -14,8 +14,8 @@
 
 char	*ft_strncat(char *dst, const char *str, size_t n)
 {
-	size_t length;
-	size_t bytes;
+	size_t	length;
+	size_t	bytes;
 
 	length = ft_strlen(dst);
 	bytes = 0;

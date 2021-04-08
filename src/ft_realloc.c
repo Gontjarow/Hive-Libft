@@ -14,9 +14,9 @@
 
 void	*ft_realloc(void *ptr, size_t new_size, size_t old_size)
 {
-	char *new;
+	char	*new;
 
 	new = ft_memcpy(ft_memalloc(new_size), ptr, old_size);
 	free(ptr);
-	return (new ? new : NULL);
+	return (new);
 }

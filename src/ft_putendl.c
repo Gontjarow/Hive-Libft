@@ -14,7 +14,7 @@
 
 size_t	ft_putendl(const char *str)
 {
-	size_t length;
+	size_t	length;
 
 	length = ft_putstr(str);
 	write(1, "\n", 1);

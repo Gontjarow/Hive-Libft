@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t			ft_putstrn_case(const char *str, size_t n, int mode)
+size_t	ft_putstrn_case(const char *str, size_t n, int mode)
 {
 	size_t	i;
 	char	c;
@@ -22,7 +22,10 @@ size_t			ft_putstrn_case(const char *str, size_t n, int mode)
 	{
 		while (str[i] && i < n)
 		{
-			c = (mode < 0) ? ft_tolower(str[i]) : ft_toupper(str[i]);
+			if (mode < 0)
+				c = ft_tolower(str[i]);
+			else
+				c = ft_toupper(str[i]);
 			write(1, &c, 1);
 			++i;
 		}

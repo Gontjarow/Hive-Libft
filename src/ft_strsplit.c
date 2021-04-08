@@ -43,7 +43,10 @@ static void	split_to_array(char **data, const char *str, char c)
 		{
 			reading = TRUE;
 			end = ft_strchr(str, c);
-			length = (end ? (size_t)(end - str) : ft_strlen(str));
+			if (end)
+				length = (size_t)(end - str);
+			else
+				length = ft_strlen(str);
 			*(data++) = ft_strsub(str, 0, length);
 		}
 		else if (reading && *str == c)
@@ -52,7 +55,7 @@ static void	split_to_array(char **data, const char *str, char c)
 	}
 }
 
-char		**ft_strsplit(const char *str, char c)
+char	**ft_strsplit(const char *str, char c)
 {
 	char		**data;
 	size_t		bytes;
@@ -61,7 +64,8 @@ char		**ft_strsplit(const char *str, char c)
 	if (str)
 	{
 		bytes = sizeof(char *) * (word_count(str, c) + 1);
-		if ((data = (char **)malloc(bytes)))
+		data = (char **)malloc(bytes);
+		if (data)
 		{
 			ft_memset((void *)data, '\0', bytes);
 			if (bytes > sizeof(char *))

@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:44:27 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/25 05:58:25 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 08:04:11 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_itoa(long long number)
 	ft_memset(string, 0, 21);
 	string[0] = '-';
 	length = ft_numlen(number);
-	num = (number < 0) ? -number : number;
+	if (number < 0)
+		num = -number;
 	while (length--)
 	{
 		if (num)

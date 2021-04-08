@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char		*ft_strtrim(const char *str)
+char	*ft_strtrim(const char *str)
 {
 	char	*string;
 	size_t	start;

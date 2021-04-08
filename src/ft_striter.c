@@ -14,7 +14,7 @@
 
 void	ft_striter(char *str, void (*func)(char *))
 {
-	size_t i;
+	size_t	i;
 
 	if (str && func)
 	{

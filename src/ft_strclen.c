@@ -20,7 +20,7 @@
 
 size_t	ft_strclen(const char *str, int c)
 {
-	size_t length;
+	size_t	length;
 
 	length = 0;
 	c = (unsigned char)c;

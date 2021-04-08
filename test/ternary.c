@@ -13,4 +13,6 @@ int main()
 	char *mem2 = (char *)malloc(8);
 	char *ptr = *(char **)ft_ternary(nul, &mem1, &mem2);
 	printf("mem1:%p, mem2:%p, ptr = %p\n", mem1, mem2, ptr);
+
+	printf("size of int = %zu\n", sizeof(int));
 }

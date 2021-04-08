@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 02:40:10 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/16 04:27:57 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 08:19:33 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,39 @@
 ** if the value would be less than 16 ("10")
 */
 
+static int	numlen(size_t number, int base)
+{
+	int	len;
+
+	len = 0;
+	while (number)
+	{
+		++len;
+		number /= base;
+	}
+	return (len);
+}
+
 static void	write_hex(size_t number)
 {
-	char	buffer[sizeof(size_t) * 2];
+	char	buffer[128];
 	size_t	digits;
 	size_t	index;
 	size_t	mod;
 
 	digits = number;
 	index = (number == 0);
-	while (digits)
-		(++index) && (digits /= 16);
+	index += numlen(number, 16);
 	buffer[0] = '0';
 	index -= (index > 1);
 	digits = index;
 	while (~index)
 	{
 		mod = number % 16;
-		buffer[index--] = (mod < 10) ? ('0' + mod) : ('a' + (mod - 10));
+		if (mod < 10)
+			buffer[index--] = ('0' + mod);
+		else
+			buffer[index--] = ('a' + (mod - 10));
 		number /= 16;
 	}
 	write(1, buffer, 1 + digits);
@@ -44,14 +59,6 @@ static void	write_hex(size_t number)
 ** Alternate header:
 **	ft_printf("%lu %.*s at %p:\n", size, 4 + (size > 1), "bytes", data);
 */
-
-static void	write_header(unsigned char *data)
-{
-	write(1, "                                                    | ", 54);
-	write(1, "@ 0x", 4);
-	write_hex((size_t)data);
-	write(1, "\n", 1);
-}
 
 static void	show_char(unsigned char num)
 {
@@ -74,7 +81,7 @@ static void	write_readable(unsigned char *data, size_t *show, size_t *byte)
 	write(1, "\n", 1);
 }
 
-void		ft_print_memory(const void *addr, size_t size)
+void	ft_print_memory(const void *addr, size_t size)
 {
 	unsigned char	*data;
 	size_t			byte;
@@ -88,7 +95,7 @@ void		ft_print_memory(const void *addr, size_t size)
 	data = (unsigned char *)addr;
 	byte = 0;
 	show = 0;
-	write_header(data);
+	ft_printf("%lu %.*s at %p:\n", size, 4 + (size > 1), "bytes", data);
 	while (byte < size)
 	{
 		write_hex(data[byte++]);

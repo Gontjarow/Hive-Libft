@@ -29,7 +29,8 @@ char	*ft_strjoin_free(char *source, const char *append)
 	{
 		a = ft_strlen(source);
 		b = ft_strlen(append);
-		if ((new = ft_strnew(a + b + 1)))
+		new = ft_strnew(a + b + 1);
+		if (new)
 		{
 			ft_strcpy(new, source);
 			ft_strcpy(new + a, append);

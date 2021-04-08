@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static long double	g_round[] =
+static const long double	g_round[] =
 {
 	0.5,
 	0.05,
@@ -36,13 +36,13 @@ static long double	g_round[] =
 	0.00000000000000000005,
 };
 
-static void			buf_integer(
-					char *buffer,
-					unsigned long integer,
-					unsigned char sign,
-					unsigned char *i)
+static void	buf_integer(
+	char *buffer,
+	unsigned long integer,
+	unsigned char sign,
+	unsigned char *i)
 {
-	unsigned char length;
+	unsigned char	length;
 
 	length = ft_numlen_ul(integer);
 	while (length--)
@@ -53,11 +53,11 @@ static void			buf_integer(
 	}
 }
 
-static void			buf_fractional(
-					char *buffer,
-					long double floating,
-					unsigned char precision,
-					unsigned char *i)
+static void	buf_fractional(
+	char *buffer,
+	long double floating,
+	unsigned char precision,
+	unsigned char *i)
 {
 	if (precision)
 	{
@@ -71,7 +71,7 @@ static void			buf_fractional(
 	}
 }
 
-static char			*check_invalid(long double floating)
+static char	*check_invalid(long double floating)
 {
 	if (floating != floating)
 		return (ft_strdup("nan"));
@@ -87,7 +87,7 @@ static char			*check_invalid(long double floating)
 ** At least 16 digits of precision.
 */
 
-char				*ft_ftoa(long double floating, unsigned char precision)
+char	*ft_ftoa(long double floating, unsigned char precision)
 {
 	char			buffer[128];
 	unsigned char	i;
@@ -95,11 +95,14 @@ char				*ft_ftoa(long double floating, unsigned char precision)
 	unsigned char	sign;
 	char			*error;
 
-	if ((error = check_invalid(floating)))
+	error = check_invalid(floating);
+	if (error)
 		return (error);
 	i = 0;
-	precision = (19 < precision) ? 19 : precision;
-	if ((sign = (signbit(floating) != 0)))
+	if (19 > precision)
+		precision = 19;
+	sign = (signbit(floating) != 0);
+	if (sign)
 	{
 		floating = -floating;
 		buffer[i++] = '-';

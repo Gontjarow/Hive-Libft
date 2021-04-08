@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 16:52:22 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/07/26 05:11:20 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 08:07:06 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 size_t	ft_putstrn(const char *str, size_t n)
 {
-	size_t length;
+	size_t	length;
 
 	if (str)
 	{

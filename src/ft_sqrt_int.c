@@ -12,8 +12,8 @@
 
 unsigned int	ft_sqrt_int(unsigned int number)
 {
-	unsigned int root;
-	unsigned int square;
+	unsigned int	root;
+	unsigned int	square;
 
 	if (number == 0)
 		return (0);

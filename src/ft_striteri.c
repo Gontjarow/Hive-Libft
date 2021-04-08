@@ -14,7 +14,7 @@
 
 void	ft_striteri(char *str, void (*func)(unsigned int, char *))
 {
-	unsigned int i;
+	unsigned int	i;
 
 	if (str && func)
 	{

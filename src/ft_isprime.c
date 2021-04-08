@@ -14,8 +14,8 @@
 
 unsigned int	ft_isprime(unsigned int number)
 {
-	unsigned int divisor;
-	unsigned int max;
+	unsigned int	divisor;
+	unsigned int	max;
 
 	divisor = 2;
 	max = ft_sqrt_int(number);

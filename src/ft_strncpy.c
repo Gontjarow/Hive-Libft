@@ -14,7 +14,7 @@
 
 char	*ft_strncpy(char *dst, const char *str, size_t n)
 {
-	size_t byte;
+	size_t	byte;
 
 	byte = 0;
 	while (str[byte] && (byte < n))

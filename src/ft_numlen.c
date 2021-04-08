@@ -17,14 +17,15 @@
 ** -2147483648, 2147483647, 4294967295
 */
 
-int		ft_numlen(long number)
+int	ft_numlen(long number)
 {
-	char length;
+	char	length;
 
 	if (number == 0)
 		return (1);
 	length = (number < 0);
-	number = (number < 0) ? -number : number;
+	if (number < 0)
+		number = -number;
 	while (number)
 	{
 		++length;
@@ -38,9 +39,9 @@ int		ft_numlen(long number)
 ** "Am I stupid? Is this the correct way?"
 */
 
-int		ft_numlen_ul(unsigned long number)
+int	ft_numlen_ul(unsigned long number)
 {
-	int length;
+	int	length;
 
 	if (number == 0)
 		return (1);
@@ -53,9 +54,9 @@ int		ft_numlen_ul(unsigned long number)
 	return (length);
 }
 
-int		ft_numlen_ull(unsigned long long number)
+int	ft_numlen_ull(unsigned long long number)
 {
-	char length;
+	char	length;
 
 	if (number == 0)
 		return (1);

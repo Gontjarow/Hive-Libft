@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:36:21 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/16 04:23:06 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 07:41:21 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,22 @@
 **	because of the negative sign.
 */
 
+static int	numlen(long long number, int base)
+{
+	int	len;
+
+	len = 0;
+	while (number)
+	{
+		++len;
+		number /= base;
+	}
+	return (len);
+}
+
 char	*ft_itoa_base(long long number, int base)
 {
 	char			string[64 + 1];
-	long long		digits;
 	unsigned int	index;
 	unsigned int	mod;
 
@@ -29,16 +41,17 @@ char	*ft_itoa_base(long long number, int base)
 	if (base == 10)
 		return (ft_itoa(number));
 	base = ft_clamp(base, 2, 36);
-	number = (number < 0) ? -number : number;
-	digits = number;
-	index = 0;
-	while (digits)
-		(++index) && (digits /= base);
+	if (number < 0)
+		number = -number;
+	index = numlen(number, base);
 	string[index] = '\0';
 	while (~--index)
 	{
 		mod = number % base;
-		string[index] = (mod < 10) ? ('0' + mod) : ('A' + (mod - 10));
+		if (mod < 10)
+			string[index] = ('0' + mod);
+		else
+			string[index] = ('A' + (mod - 10));
 		number /= base;
 	}
 	return (ft_strdup(string));

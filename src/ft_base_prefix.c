@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int				ft_base_prefix(const char *str)
+int	ft_base_prefix(const char *str)
 {
 	int		base;
 	size_t	length;

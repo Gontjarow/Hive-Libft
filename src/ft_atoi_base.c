@@ -48,7 +48,7 @@ static int	skip_prefix(const char *str)
 **	if a nonsensical base is specified ("123", 2), the behavior is undefined.
 */
 
-long		ft_atoi_base(const char *str, int base)
+long	ft_atoi_base(const char *str, int base)
 {
 	long	number;
 

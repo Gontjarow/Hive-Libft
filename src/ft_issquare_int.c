@@ -14,7 +14,7 @@
 
 unsigned int	ft_issquare_int(unsigned int number)
 {
-	unsigned int root;
+	unsigned int	root;
 
 	root = ft_sqrt_int(number);
 	return (number - (root * root) == 0);

@@ -20,7 +20,7 @@
 
 size_t	ft_putnotice(const char *str, const char *fg, const char *bg)
 {
-	size_t length;
+	size_t	length;
 
 	if (fg)
 		ft_putstr(fg);

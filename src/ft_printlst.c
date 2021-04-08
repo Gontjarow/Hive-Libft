@@ -14,7 +14,7 @@
 
 static void	print_node(t_list *head)
 {
-	char *temp;
+	char	*temp;
 
 	ft_putstr("{0x");
 	temp = ft_itoa_base((long long)head, 16);
@@ -38,7 +38,7 @@ static void	print_node(t_list *head)
 	ft_putstr(" bytes)}");
 }
 
-void		ft_printlst(t_list *head)
+void	ft_printlst(t_list *head)
 {
 	while (head)
 	{
@@ -49,7 +49,7 @@ void		ft_printlst(t_list *head)
 	ft_putendl("{null}");
 }
 
-void		ft_printlst_endl(t_list *head)
+void	ft_printlst_endl(t_list *head)
 {
 	while (head)
 	{

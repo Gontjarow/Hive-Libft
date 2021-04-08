@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		*ft_range(int min, int max)
+int	*ft_range(int min, int max)
 {
 	int		*array;
 	size_t	i;
@@ -20,7 +20,8 @@ int		*ft_range(int min, int max)
 	array = NULL;
 	if (min < max)
 	{
-		if ((array = (int *)malloc((max - min) * sizeof(int))))
+		array = (int *)malloc((max - min) * sizeof(int));
+		if (array)
 		{
 			i = 0;
 			while (min < max)
