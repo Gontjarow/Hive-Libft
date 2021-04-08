@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:14:44 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/23 06:50:16 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 04:30:07 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,6 @@ void			ft_strrev(char *str);
 unsigned int	ft_lcm(unsigned int a, unsigned int b);
 unsigned int	ft_hcf(unsigned int a, unsigned int b);
 unsigned int	ft_sqrt_int(unsigned int number);
-unsigned int	ft_prime_nfactors(unsigned int number);
 
 unsigned int	ft_issquare_int(unsigned int number);
 unsigned int	ft_isprime(unsigned int number);
@@ -239,9 +238,9 @@ int				ft_numlen_base(long number, int base);
 int				ft_clamp(int in, int low, int high);
 
 /*
-** Math, allocation
+** Misc
 */
 
-unsigned int	*ft_prime_factors(unsigned int number);
+void	*ft_ternary(int expression, void *yes, void *no);
 
 #endif
