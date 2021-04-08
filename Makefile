@@ -48,6 +48,7 @@ OBJ_PRINTF := $(SRC_PRINTF:$(SRC_DIR)/printf/%.c=$(OBJ_DIR)/%.o)
 DEP_PRINTF := $(OBJ_PRINTF:.o=.d)
 
 MSG = \033[38;5;214m
+OK = \033[38;5;154m
 END = \033[0m
 
 .PHONY: all re fclean clean test
@@ -59,25 +60,25 @@ END = \033[0m
 # newer-than-target:    $?
 
 all: $(NAME) $(PRINTF)
-	@ar -rc $(NAME) $(PRINTF)
-	@echo "$(MSG)All done!$(END)"
+	ar -rc $(NAME) $(OBJ_PRINTF)
+	@echo "$(OK)OK:\tAll done!$(END)"
 
 $(NAME): $(OBJ_BASE)
 	@ar -rc $@ $^
-	@echo "$(MSG)Base done!$(END)"
+	@echo "$(OK)OK:\tBase done!$(END)"
 
 $(PRINTF): $(OBJ_PRINTF)
 	@ar -rc $@ $^
-	@echo "$(MSG)Prinf done!$(END)"
+	@echo "$(OK)OK:\tPrinf done!$(END)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@echo "$(MSG)Compiling $(notdir $@)$(END)"
+	@echo "$(MSG)libft\t $(notdir $@)$(END)"
 	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/printf/%.c
 	@mkdir -p $(dir $@)
-	@echo "$(MSG)Compiling printf $(notdir $@)$(END)"
+	@echo "$(MSG)printf\t $(notdir $@)$(END)"
 	@$(CC) $(CPPFLAGS) -I$(SRC_DIR)/printf $(CFLAGS) -L. -lft -c $< -o $@
 
 re: fclean all
@@ -91,7 +92,7 @@ fclean: clean
 clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -f libft.h.gch printf/ft_printf.h.gch
-	@echo "$(MSG)Objects and precompiled headers removed removed!$(END)"
+	@echo "$(MSG)Objects and precompiled headers removed!$(END)"
 
 # Usage: make test file=putendl
 
