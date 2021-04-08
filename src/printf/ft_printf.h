@@ -6,15 +6,16 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 18:57:36 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/23 06:07:12 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 09:11:06 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft.h"
+# include "libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 # include <math.h>
 
 # define SPECIFIER_HH	1
@@ -28,7 +29,18 @@
 # define FLAG_PREFIX		0b1000
 # define FLAG_LEADING_ZERO	0b10000
 
-typedef struct	s_data
+/*
+** Note: Haiku
+**	I don't want these here,
+**	but I have no options left.
+**	Blame Norminette.
+** Note: These are specifically related to the final output.
+** p = output length or "total precision" without padding
+** w = width padding
+** z = zero padding
+*/
+
+typedef struct s_data
 {
 	va_list	ap;
 	int		bit;
@@ -38,52 +50,54 @@ typedef struct	s_data
 	char	type;
 	size_t	written;
 	size_t	p;
-}				t_data;
+	size_t	w;
+	size_t	z;
+}	t_data;
 
 /*
 ** Main
 */
 
-int				ft_printf(const char *format, ...);
-char			parse_format(const char *format, t_data *flag);
+int		ft_printf(const char *format, ...);
+char	parse_format(const char *format, t_data *flag);
 
 /*
 ** Conversion: s
 */
 
-void			output_str(char *arg, t_data *flag);
+void	output_str(char *arg, t_data *flag);
 
 /*
 ** Conversion: di c
 */
 
-void			output_int(long long arg, t_data *flag);
-void			output_char(unsigned char arg, t_data *flag);
+void	output_int(long long arg, t_data *flag);
+void	output_char(unsigned char arg, t_data *flag);
 
 /*
 ** Conversion: Xx u o
 */
 
-void			output_uint(unsigned long long arg, t_data *flag);
-void			output_unsigned(unsigned long long arg, t_data *flag);
-void			output_octal(unsigned long long arg, t_data *flag);
+void	output_uint(unsigned long long arg, t_data *flag);
+void	output_unsigned(unsigned long long arg, t_data *flag);
+void	output_octal(unsigned long long arg, t_data *flag);
 
 /*
 ** Conversion: p
 */
 
-void			output_pointer(void *arg, t_data *flag);
+void	output_pointer(void *arg, t_data *flag);
 
 /*
 ** Conversion: f
 */
 
-void			output_double(long double arg, t_data *flag);
+void	output_double(long double arg, t_data *flag);
 
 /*
 ** Output helpers
 */
 
-void			width_padder(int w, const char c, t_data *flag);
+void	width_padder(int w, const char c, t_data *flag);
 
 #endif

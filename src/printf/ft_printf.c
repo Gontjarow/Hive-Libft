@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngontjar <niko.gontjarow@gmail.com>        +#+  +:+       +#+        */
+/*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 18:54:29 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/13 19:27:57 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 08:46:10 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	send_uint(t_data *flag)
 {
 	if (flag->specifier == 0)
 		output_uint(va_arg(flag->ap, unsigned int), flag);
-	if (flag->specifier == SPECIFIER_L)
+	else if (flag->specifier == SPECIFIER_L)
 		output_uint(va_arg(flag->ap, unsigned long int), flag);
 	else if (flag->specifier == SPECIFIER_LL)
 		output_uint(va_arg(flag->ap, unsigned long long int), flag);
@@ -52,7 +52,8 @@ static char	try_parsing(const char *format, t_data *flag)
 {
 	char	parsed;
 
-	if ((parsed = parse_format(++format, flag)) == 0)
+	parsed = parse_format(++format, flag);
+	if (parsed == 0)
 		return (0);
 	if (flag->type == 's')
 		output_str(va_arg(flag->ap, char *), flag);
@@ -71,11 +72,11 @@ static char	try_parsing(const char *format, t_data *flag)
 	return (parsed);
 }
 
-int			ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_data	flag;
 
-	flag = (t_data){{{0}}, 0, 0, 0, 0, 0, 0, 0};
+	flag = (t_data){{{0}}, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	va_start(flag.ap, format);
 	while (*format)
 	{
@@ -91,7 +92,7 @@ int			ft_printf(const char *format, ...)
 			continue ;
 		}
 		write(1, format, 1);
-		++flag.written && *format && ++format;
+		++flag.written, *format && ++format;
 	}
 	va_end(flag.ap);
 	return (flag.written);

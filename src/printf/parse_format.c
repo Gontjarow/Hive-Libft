@@ -6,7 +6,7 @@
 /*   By: ngontjar <ngontjar@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:42:32 by ngontjar          #+#    #+#             */
-/*   Updated: 2020/08/23 06:21:10 by ngontjar         ###   ########.fr       */
+/*   Updated: 2021/04/08 09:03:49 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	parse_width(const char **format, t_data *flag)
 {
-	char bytes;
+	char	bytes;
 
 	bytes = 0;
 	if (**format == '*')
@@ -25,7 +25,7 @@ static char	parse_width(const char **format, t_data *flag)
 			flag->bit |= FLAG_JUSTIFY_LEFT;
 			flag->width = -flag->width;
 		}
-		++(*format) && ++bytes;
+		++(*format), ++bytes;
 	}
 	else
 	{
@@ -33,34 +33,38 @@ static char	parse_width(const char **format, t_data *flag)
 		{
 			flag->width *= 10;
 			flag->width += (**format - '0');
-			++(*format) && ++bytes;
+			++(*format), ++bytes;
 		}
 	}
 	return (bytes);
 }
 
+/*
+** Note: The while(isdigit) loop contains a branchless ternary.
+** Todo: Find a way to simplify this within 25 lines in a sensible way.
+*/
 static char	parse_precision(const char **format, t_data *flag)
 {
-	char bytes;
+	char	bytes;
 
 	if (**format != '.')
 		return (0);
-	++(*format) && (bytes = 1);
+	++(*format), (bytes = 1);
 	if (**format == '*' && ++(*format) && ++bytes)
 	{
 		flag->precision = va_arg(flag->ap, int);
-		flag->precision = (flag->precision < 0 ? -1 : flag->precision);
+		if (flag->precision < 0)
+			flag->precision = -1;
 	}
 	else if (**format != 'f' || **format != 'L')
 	{
-		flag->precision = (!ft_isdigit(**format)) ? 0 : flag->precision;
+		flag->precision = 0;
 		while (ft_isdigit(**format))
 		{
-			if (flag->precision == -1)
-				flag->precision = (**format - '0');
-			else
-				flag->precision = (flag->precision * 10) + (**format - '0');
-			++(*format) && ++bytes;
+			flag->precision = ((flag->precision == -1) * (**format - '0'))
+				+ ((flag->precision != -1)
+					* ((flag->precision * 10) + (**format - '0')));
+			++(*format), ++bytes;
 		}
 	}
 	if (flag->precision < -1)
@@ -70,13 +74,13 @@ static char	parse_precision(const char **format, t_data *flag)
 
 static char	parse_specifier(const char **format, t_data *flag)
 {
-	char			bytes;
-	size_t			skip;
+	char	bytes;
+	size_t	skip;
 
 	bytes = 0;
 	if (**format == 'h')
 	{
-		++(*format) && ++bytes;
+		++(*format), ++bytes;
 		if (**format == 'h' && ++(*format) && ++bytes)
 			flag->specifier = SPECIFIER_HH;
 		else
@@ -85,21 +89,21 @@ static char	parse_specifier(const char **format, t_data *flag)
 	else if ((**format == 'l' && *(*format + 1) != 'f')
 		|| (**format == 'L' && *(*format + 1) == 'f'))
 	{
-		++(*format) && ++bytes;
+		++(*format), ++bytes;
 		if (**format == 'l' && ++(*format) && ++bytes)
 			flag->specifier = SPECIFIER_LL;
 		else
 			flag->specifier = SPECIFIER_L;
 	}
-	if ((skip = (size_t)ft_strany_skip(*format, "hlL")))
-		skip -= (size_t)(*format);
-	(bytes += skip) && ((*format) += skip);
+	skip = (size_t)ft_strany_skip(*format, "hlL");
+	skip -= (skip != 0) * (size_t)(*format);
+	(bytes += skip), ((*format) += skip);
 	return (bytes);
 }
 
 static char	parse_flags(const char **format, t_data *flag)
 {
-	int bytes;
+	int	bytes;
 
 	bytes = 0;
 	while (**format == '-'
@@ -118,12 +122,12 @@ static char	parse_flags(const char **format, t_data *flag)
 			flag->bit |= FLAG_PREFIX;
 		if (**format == '0')
 			flag->bit |= FLAG_LEADING_ZERO;
-		++(*format) && ++bytes;
+		++(*format), ++bytes;
 	}
 	return (bytes);
 }
 
-char		parse_format(const char *format, t_data *flag)
+char	parse_format(const char *format, t_data *flag)
 {
 	int		bytes;
 	char	*type;
@@ -134,8 +138,14 @@ char		parse_format(const char *format, t_data *flag)
 	bytes += parse_precision(&format, flag);
 	bytes += parse_specifier(&format, flag);
 	type = ft_strchr("sdfciXxu%op", *format);
-	flag->type = (type ? *type : 0);
-	if (!flag->type)
+	if (type)
+	{
+		flag->type = *type;
+		return (bytes);
+	}
+	else
+	{
+		flag->type = '\0';
 		return (0);
-	return (bytes);
+	}
 }
